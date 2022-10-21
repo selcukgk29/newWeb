@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block content %}
+<link rel="stylesheet" href="/static/stylesheets/uploadProject.css" />
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='/stylesheets/font.css')}}"
+/>
+<div class="container-fluid">
+  <div class="d-sm-flex align-items-center justify-content-between mb-5">
+    <h1 class="h2 mb-2 text-gray-800 title">{{_('Project Upload')}}</h1>
+    <hr class="sidebar-divider my-0" />
+  </div>
+  <div class="drag-area">
+    <div class="icon">
+      <img src="/static/icons/uploadProject.png" alt="" class="uploadPicon" />
+    </div>
+    <header>{{_('Select Project File')}}</header>
+    <form
+      action="uploadProject"
+      method="POST"
+      enctype="multipart/form-data"
+      id="form"
+    >
+      <div class="input-groupUpload col">
+        <input
+          type="file"
+          onchange="validateSize(this)"
+          id="projectfile"
+          name="project"
+          class="inputandbutton form-control"
+          autocomplete="off"
+          accept=".bin"
+          required
+        />
+        <span class="input-group-btn">
+          <button
+            type="submit"
+            name="index"
+            class="upload-button btn"
+            id="upload-buttonP"
+            disabled="false"
+          >
+            {{_('Upload')}}
+          </button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="/static/javascripts/project-uploadpage.js"></script>
+<script src="{{url_for('static', filename='/javascripts/public.js')}}"></script>
+{% endblock content %}

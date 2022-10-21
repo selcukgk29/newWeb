@@ -1,0 +1,112 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_(' Firewall-Edit Port Forwards')}}</h1>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapsed"
+            data-target="#card-body"
+            aria-expanded="true"
+            aria-controls="card-body"
+          >
+            <img
+              src="/static/icons/plus.png"
+              alt=""
+              style="width: 20px; height: 20px"
+            />
+            <span>{{_(' Edit Rule')}}</span>
+          </a>
+          <img
+            src="/static/icons/chevron-down-solid-removebg-preview.png"
+            alt=""
+            class="imageIcon"
+          />
+        </div>
+        <!-- Card Body -->
+        <div
+          id="card-body"
+          class="card-body-table collapsed"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionSidebar"
+        >
+          <div class="container">
+            <div
+              class="h5 mb-0 font-weight-bold text-gray-800"
+              id="mainContainer"
+            >
+              <form
+                action="{{url_for('multilingual.editButtonPortForwards')}}"
+                method="POST"
+              >
+                <div class="input-box">
+                  <span class="details">Name{{_('Name')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter"
+                    type="text"
+                    name="portForwardingName"
+                    autocomplete="off"
+                    value="{{filters[0]}}"
+                    required
+                  />
+                </div>
+                <div class="input-box" id="sourceAddress">
+                  <span class="details">{{_('Destination Port')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter port"
+                    type="text"
+                    name="portForwards_DestinationPort"
+                    autocomplete="off"
+                    value="{{filters[1]}}"
+                    maxlength="11"
+                    required
+                  />
+                </div>
+
+                <div class="input-box" id="afterElement">
+                  <span class="details">{{_('To Destination Adress')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter ipInput"
+                    type="text"
+                    name="portForwards_ToDestinationAdress"
+                    autocomplete="off"
+                    value="{{filters[2]}}"
+                    maxlength="22"
+                    required
+                  />
+                </div>
+                {% with messages=get_flashed_messages() %} {% if messages %}
+                <div class="input-box">
+                  <div
+                    class="alert alert-danger addUserInputs"
+                    id="danger-alert"
+                  >
+                    {{messages[0]}}
+                  </div>
+                </div>
+                {% endif %} {% endwith %}
+                <button type="submit" class="applyButton btn btn-primary">
+                  {{_('Edit')}}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

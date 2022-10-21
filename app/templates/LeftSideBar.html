@@ -1,0 +1,284 @@
+<link rel="stylesheet" href="/static/stylesheets/leftsidebar.css" />
+<ul
+  class="navbar-nav sidebar sidebar-dark accordion"
+  id="accordionSidebar"
+  style="
+    background: rgb(24, 12, 52);
+    background: linear-gradient(
+      0deg,
+      rgba(24, 12, 52, 0.7147233893557423) 0%,
+      rgba(8, 116, 164, 1) 31%
+    );
+  "
+>
+  <!-- Sidebar - Brand -->
+  <a
+    class="sidebar-brand d-flex align-items-center justify-content-center"
+    href="{{ url_for('multilingual.index') }}"
+  >
+    <div class="sidebar-brand-icon rotate-n-0">
+      <br />
+      <br />
+      <img
+        src="/static/images/sidebaricon.png"
+        style="margin-top: 15px"
+        width="200"
+        height="38"
+        id="sideBarIcon"
+      />
+      <img
+        src="/static/icons/sidebaricon.png"
+        width="40"
+        height="38"
+        id="sideBarIcon1"
+      />
+    </div>
+  </a>
+  <!-- Divider -->
+
+  <hr class="sidebar-divider my-0" />
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="/">
+      <img
+        src="/static/icons/gauge-solid-removebg-preview.png"
+        alt=""
+        class="imageIcon"
+        id="statusImage"
+      />
+      <span class="sidebarSpan" id="statusSpan">{{_('Status')}}</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider" />
+  <!-- System -->
+  {%if auth[0]=='Administrator' or auth[0]=='Technician' %}
+  <div class="sidebar-heading">System</div>
+  <li class="nav-item">
+    {%if auth[0]=='Administrator'%}
+    <a
+      class="mynavlink"
+      href="{{ url_for('multilingual.userManagement') }}"
+      aria-expanded="true"
+    >
+      <img
+        src="/static/icons/user-solid-removebg-preview.png"
+        alt=""
+        class="imageIcon"
+      />
+      <span class="sidebarSpan">{{_('User Management')}}</span>
+    </a>
+    {% endif %}
+  </li>
+
+  <li class="nav-item">
+    <a
+      class="mynavlink collapsed has-dropdown"
+      href="#"
+      data-toggle="collapse"
+      data-target="#collapseUpload"
+      aria-expanded="true"
+      aria-controls="collapseUpload"
+    >
+      <img src="/static/icons/Removal-726.png" alt="" class="imageIcon" />
+      <span class="sidebarSpan">{{_('Upload')}}</span>
+      <img
+        src="/static/icons/chevron-down-solid-removebg-preview.png"
+        alt=""
+        class="imageIcon alignArrow"
+      />
+    </a>
+    <div
+      id="collapseUpload"
+      class="collapse"
+      aria-labelledby="headingTwo"
+      data-parent="#accordionSidebar"
+    >
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">{{_('Update Device:')}}</h6>
+        {%if auth[0]=='Administrator' or auth[0]=='Technician' %}
+        <a
+          class="collapse-item"
+          href="{{ url_for('multilingual.uploadProject') }}"
+          title="Project Upload"
+          >{{_('Project Upload:')}}</a
+        >
+        {% endif %} {%if auth[0]=='Administrator' %}
+        <a
+          class="collapse-item"
+          href="{{ url_for('multilingual.uploadFirmware') }}"
+          title="Firmware Upload"
+          >{{_('Firmware Upload:')}}</a
+        >
+        <a
+          class="collapse-item"
+          href="{{ url_for('multilingual.sslUpdatePage') }}"
+          >{{_('SSL Certificate Update:')}}</a
+        >
+        {% endif %}
+      </div>
+    </div>
+  </li>
+
+  <!-- Heading -->
+  <hr class="sidebar-divider" />
+
+  <div class="sidebar-heading">{{_('Network')}}</div>
+
+  {% endif %}
+
+  <!-- Nav Item - Utilities Collapse Menu -->
+  {%if auth[0]=='Administrator' or auth[0]=='Technician' %}
+  <li class="nav-item">
+    <a class="mynavlink" href="{{ url_for('multilingual.ipSettingsEth0') }}">
+      <img src="/static/icons/Removal-815.png" alt="" class="imageIcon" />
+      <span class="sidebarSpan">{{_('Interfaces')}}</span>
+    </a>
+  </li>
+  {% endif %} {%if auth[0]=='Administrator' %}
+  <li class="nav-item">
+    <a
+      class="mynavlink collapsed"
+      href="#"
+      data-toggle="collapse"
+      data-target="#collapseUtilities"
+      aria-expanded="true"
+      aria-controls="collapseUtilities"
+    >
+      <img src="/static/icons/firewall.png" alt="" class="imageIcon" />
+
+      <span class="sidebarSpan">{{_('Firewall')}}</span>
+      <img
+        src="/static/icons/chevron-down-solid-removebg-preview.png"
+        alt=""
+        class="imageIcon alignArrow"
+      />
+    </a>
+    <div
+      id="collapseUtilities"
+      class="collapse"
+      aria-labelledby="headingUtilities"
+      data-parent="#accordionSidebar"
+    >
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">{{_('Firewall')}}</h6>
+        <!--    <a class="collapse-item" href="utilities-border.html"
+          >Device Settings</a
+        > -->
+        <a
+          class="collapse-item"
+          href="{{ url_for('multilingual.filteringRules') }}"
+          >{{_('Filtering Rules')}}</a
+        >
+        <a
+          class="collapse-item"
+          href="{{ url_for('multilingual.portForwarding') }}"
+          >{{_('Port Forwards')}}</a
+        >
+        <a
+          class="collapse-item"
+          href="{{ url_for('multilingual.networkBridge') }}"
+          >{{_('Network Bridge')}}</a
+        >
+        <a
+          class="collapse-item"
+          href="{{ url_for('multilingual.natSettings') }}"
+          >{{_('NAT')}}</a
+        >
+      </div>
+    </div>
+  </li>
+  {% endif %} {%if auth[0]=='Administrator'%}
+  <hr class="sidebar-divider" />
+  <div class="sidebar-heading">{{_('Services')}}</div>
+
+  <li class="nav-item">
+    <a
+      class="mynavlink collapsed"
+      href="#"
+      data-toggle="collapse"
+      data-target="#deviceLog"
+      aria-expanded="true"
+      aria-controls="deviceLog"
+    >
+      <img
+        src="/static/icons/clock-rotate-left-solid-removebg-preview.png"
+        alt=""
+        class="imageIcon"
+      />
+      <span class="sidebarSpan">{{_('Device Log')}}</span>
+      <img
+        src="/static/icons/chevron-down-solid-removebg-preview.png"
+        alt=""
+        class="imageIcon alignArrow"
+      />
+    </a>
+    <div
+      id="deviceLog"
+      class="collapse"
+      aria-labelledby="headingUtilities"
+      data-parent="#accordionSidebar"
+    >
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">{{_('Device Log')}}</h6>
+        <a
+          class="collapse-item"
+          href="{{ url_for('multilingual.logview') }}"
+          aria-expanded="true"
+          >{{_('Logs')}}</a
+        >
+        <a
+          class="collapse-item"
+          href="{{ url_for('multilingual.syslog') }}"
+          aria-expanded="true"
+          >Remote Syslog</a
+        >
+      </div>
+    </div>
+  </li>
+  {% endif %}
+
+  <!-- Divider -->
+  <hr class="sidebar-divider" />
+  <!-- Heading -->
+  <div class="sidebar-heading">{{_('Addons')}}</div>
+  <!-- Nav Item - Pages Collapse Menu -->
+  <!-- Nav Item - Tables -->
+  <li class="nav-item">
+    <a
+      class="mynavlink collapsed"
+      href="#"
+      data-toggle="collapse"
+      data-target="#collapseTables"
+      aria-expanded="true"
+      aria-controls="collapseTables"
+    >
+      <img
+        src="/static/icons/table-cells-large-solid-removebg-preview.png"
+        alt=""
+        class="imageIcon"
+      />
+      <span class="sidebarSpan">{{_('Tables')}}</span>
+      <img
+        src="/static/icons/chevron-down-solid-removebg-preview.png"
+        alt=""
+        class="imageIcon alignArrow"
+      />
+    </a>
+    <div
+      id="collapseTables"
+      class="collapse"
+      aria-labelledby="headingPages"
+      data-parent="#accordionSidebar"
+    >
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">{{_('Block Tables')}}</h6>
+        <a class="collapse-item" href="{{ url_for('multilingual.webgui') }}"
+          >{{_('Block Parameters')}}</a
+        >
+      </div>
+    </div>
+  </li>
+</ul>

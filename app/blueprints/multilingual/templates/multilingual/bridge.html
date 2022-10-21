@@ -1,0 +1,239 @@
+{% extends "base.html" %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='/stylesheets/networkInfo.css')}}"
+/>
+<div class="container-fluid">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('Firewall-Bridge Connections')}}</h1>
+  </div>
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#card-body"
+            aria-expanded="true"
+            aria-controls="card-body"
+          >
+            <img
+              src="/static/icons/plus.png"
+              alt=""
+              style="width: 20px; height: 20px"
+            />
+            <span>{{_('Add Rule')}} </span>
+          </a>
+          <img
+            src="/static/icons/chevron-down-solid-removebg-preview.png"
+            alt=""
+            class="imageIcon"
+          />
+        </div>
+        <!-- Card Body -->
+        <div
+          id="card-body"
+          class="card-body-table collapsed"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionSidebar"
+        >
+          <div class="container">
+            <div class="container">
+              <div
+                class="h5 mb-0 font-weight-bold text-gray-800"
+                id="mainContainer"
+              >
+                <form action="/firewall/networkBridge" method="POST">
+                  <span class="details"
+                    >{{_('Select interface/interfaces to bridge')}}</span
+                  >
+                  <div class="containerNetworkRight">
+                    <div class="input-box">
+                      <label class="containerBody containerRad" id="eth0">
+                        <img src="/static/icons/ethernet-48.png" alt="" />
+                        <p class="user-select-none">ETH0</p>
+                        <input
+                          type="checkbox"
+                          name="toggle"
+                          id="toggle"
+                          data-toggle="toggled"
+                          style="display: none"
+                          check
+                        />
+                      </label>
+                    </div>
+                    <div class="input-box">
+                      <label class="containerBody containerRad" id="eth1">
+                        <img src="/static/icons/ethernet-48.png" alt="" />
+                        <p class="user-select-none">ETH1</p>
+                        <input
+                          type="checkbox"
+                          name="toggle1"
+                          id="toggle1"
+                          data-toggle="toggled"
+                          style="display: none"
+                          check
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  <div class="input-box">
+                    <span class="details">{{_('Name')}}</span>
+                    <input
+                      class="addUserInputs inputsSameParameter"
+                      type="text"
+                      name="bridgeName"
+                      autocomplete="off"
+                      required
+                    />
+                  </div>
+                  <div class="input-box">
+                    <span class="details">Bridge IP</span>
+                    <input
+                      placeholder=""
+                      type="text"
+                      name="bridgeIP"
+                      class="inputsSameParameter addUserInputs ipInput"
+                      maxlength="15"
+                      autocomplete="off"
+                      required
+                    />
+                  </div>
+                  {% with messages=get_flashed_messages() %} {% if messages %}
+                  <div class="input-box">
+                    <div
+                      class="alert alert-danger addUserInputs"
+                      id="danger-alert"
+                    >
+                      {{messages[0]}}
+                    </div>
+                  </div>
+                  {% endif %} {% endwith %}
+                  <button type="submit" class="applyButton btn btn-primary">
+                    {{_('Add')}}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#card-body-table"
+            aria-expanded="true"
+            aria-controls="card-body-table"
+          >
+            <img
+              src="/static/icons/table-cells-large-solid-removebg-preview.png"
+              style="width: 20px; height: 20px"
+            />
+            <span>{{_('Bridge Lists')}}</span>
+          </a>
+          <img
+            src="/static/icons/chevron-down-solid-removebg-preview.png"
+            alt=""
+            class="imageIcon"
+          />
+        </div>
+        <!-- Card Body -->
+        <div
+          id="card-body-table"
+          class="card-body collapsed"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionSidebar"
+        >
+          <div class="container">
+            <table class="table table-hover table-responsive-md table-flex">
+              <thead>
+                <tr>
+                  <th scope="col" style="padding-right: 200px">
+                    {{_('Name')}}
+                  </th>
+                  <th scope="col">{{_('Interfaces')}}</th>
+                  <th scope="col">Bridge IP</th>
+                  <th scope="col">-</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for filterRule in filters%}
+                <tr>
+                  <th>{{filterRule[0]}}</th>
+                  <td>{{filterRule[1]}}</td>
+                  <td>{{filterRule[2]}}</td>
+                  <td>
+                    <form
+                      action="/firewall/networkBridge/deleteBridge"
+                      method="POST"
+                    >
+                      <button
+                        type="submit button"
+                        class="btn btn-default"
+                        name="DeleteBridgeRule"
+                        value="{{filterRule[3]}}"
+                      >
+                        <img
+                          src="/static/icons/trash-can-solid-removebg-preview.png"
+                          alt=""
+                          class="imageIcon"
+                        />
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{{url_for('static', filename='/javascripts/jquery.min.js')}}"></script>
+    <script>
+      window.setTimeout(function () {
+        $(".alert")
+          .fadeTo(500, 0)
+          .slideUp(500, function () {
+            $(this).remove();
+          });
+      }, 5000);
+    </script>
+    <script>
+      $("#toggle").change(function () {
+        var mode = $(this).prop("checked");
+        if (mode === true) {
+          $("#eth0").attr("style", "border-color:#f6c23e");
+        } else {
+          $("#eth0").attr("style", "border-color:gray");
+        }
+      });
+      $("#toggle1").change(function () {
+        var mode = $(this).prop("checked");
+        if (mode === true) {
+          $("#eth1").attr("style", "border-color:#f6c23e");
+        } else {
+          $("#eth1").attr("style", "border-color:gray");
+        }
+      });
+    </script>
+  </div>
+</div>
+{% endblock content %}

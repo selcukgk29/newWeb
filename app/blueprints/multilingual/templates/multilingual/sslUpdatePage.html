@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('Update Device-SSL Update')}}</h1>
+  </div>
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12 F">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">
+            {{_('SSL Certificate Update')}}
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="container">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              <div class="input-box">
+                <span class="details">{{_('Last Update')}}</span>
+                <input
+                  type="text"
+                  placeholder=""
+                  class="inputsSameParameter addUserInputs"
+                  value="{{sslUpdateTime}}"
+                  disabled="true"
+                />
+              </div>
+              <div class="input-box">
+                <span class="details"
+                  >{{_('Please Select SSL
+                  Certificate')}}</span
+                >
+
+                <form
+                  action="sslUpdatePage"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  id="form"
+                >
+                  <input
+                    type="file"
+                    id="sslPage"
+                    class="statusPageInputs addUserInputs inputsSameParameter"
+                    name="sslUpdate"
+                    accept=".crt"
+                  />
+                  <div class="input-box">
+                    <button
+                      type="submit"
+                      id="sslUploadButton"
+                      class="btn btn-primary marginsslButton"
+                      disabled="true"
+                    >
+                      {{_('Upload')}}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/static/javascripts/ssl-uploadpage.js"></script>
+{% endblock content %}

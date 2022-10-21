@@ -1,0 +1,211 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('Interfaces-WLAN HOTSPOT')}}</h1>
+  </div>
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">Hotspot</h6>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="container">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              <form action="{{url_for('multilingual.wlanSetting')}}" method="POST">
+              <div class="input-box alignmentEnd">
+                <p id="wlanState" >{{ wifiState }}</p>
+                <select
+                  class="btn btn-secondary"
+                  onchange="location = this.value;"
+                >
+                  <option
+                    class=""
+                    value="{{url_for('multilingual.ipSettingsWlan')}}"
+                  >
+                    WLAN
+                  </option>
+                  <option
+                    class=""
+                    value="{{url_for('multilingual.ipSettingsEth0')}}"
+                  >
+                    ETH0
+                  </option>
+                  <option
+                    class=""
+                    value="{{url_for('multilingual.ipSettingsEth1')}}"
+                  >
+                    ETH1
+                  </option>
+
+                  <option
+                    class=""
+                    value="{{url_for('multilingual.ipSettingsGSM')}}"
+                  >
+                    GSM
+                  </option>
+                </select>
+              </div>
+              <div
+                class="alignWlan btn-group btn-group-toggle"
+                data-toggle="buttons"
+              >
+                <label class="btn btn-secondary" id="clientButton">
+                  <input
+                    type="radio"
+                    name="options"
+                    id="option1"
+                    autocomplete="off"
+                    class="inputsSameParameter addUserInputs"
+                    onclick="activeClient()"
+                  />
+                  Client
+                </label>
+                <label class="btn btn-secondary active" id="hotspotButton">
+                  <input
+                    type="radio"
+                    name="options"
+                    id="option2"
+                    autocomplete="off"
+                    class="inputsSameParameter addUserInputs"
+                    onclick="activeHotspot()"
+                  />
+                  Hotspot
+                </label>
+                <label class="btn btn-secondary" id="disableButton">
+                  <input
+                    type="radio"
+                    name="options"
+                    id="option3"
+                    class="inputsSameParameter addUserInputs"
+                    autocomplete="off"
+                  />
+                  Disabled
+                </label>
+              </div>
+              <div class="input-box">
+                <span class="details">SSID</span>
+                <input
+                  type="text"
+                  placeholder=""
+                  name="WifiSSID_Hspot"
+                  class="inputsSameParameter addUserInputs"
+                  value="{%if dataType1!=None %}{{ dataType1[0]['WifiSSID_Hspot'] }}{% endif %}"
+                />
+              </div>
+              <div class="input-box">
+                <span class="details">Password</span>
+                <input
+                  type="text"
+                  name="WifiPssw_Hspot"
+                  class="inputsSameParameter addUserInputs"
+                  value="{%if dataType1!=None %}{{ dataType1[0]['WifiPssw_Hspot']}}{%endif%}"
+                />
+              </div>
+
+              <div class="input-box">
+                <span class="details">Country</span>
+
+                <div class="Countrydropdown">
+                  <select class="btn btn-secondary">
+                    <option class="" name="country" value="en">EN</option>
+                    <option class="" name="country" value="gb">GB</option>
+                    <option class="" name="country" value="tr">TR</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-box">
+                <span class="details">Lease Time</span>
+                <input
+                  type="text"
+                  name="WifiLeaseTime"
+                  class="inputsSameParameter addUserInputs port"
+                  value="{%if dataType1!=None%}{{ dataType1[0]['WifiLeaseTime']}}{%endif%}"
+                  required
+                />
+              </div>
+
+              <div class="input-box">
+                <span class="details">Local IP</span>
+                <input
+                  type="text"
+                  name="WifiLocalIp_Hspot"
+                  class="inputsSameParameter addUserInputs ipInput"
+                  value="{%if dataType1!=None%}{{ dataType1[0]['WifiLocalIp_Hspot']}}{%endif%}"
+                  maxlength="15"
+                  required
+                />
+              </div>
+
+              <hr class="wlanHr" />
+              <span class="subTitle">DHCP Server</span>
+              <div class="input-box">
+                <span class="details"> {{_('Start IP')}}</span>
+                <input
+                  type="text"
+                  name="WifiStartIp"
+                  class="inputsSameParameter addUserInputs ipInput"
+                  value="{%if dataType1!=None%}{{ dataType1[0]['WifiStartIp']}}{%endif%}"
+                  maxlength="15"
+                  required
+                />
+              </div>
+              <div class="input-box">
+                <span class="details"> {{_('End IP')}}</span>
+                <input
+                  type="text"
+                  name="WifiEndIp"
+                  class="inputsSameParameter addUserInputs ipInput"
+                  value="{%if dataType1!=None%}{{ dataType1[0]['WifiEndIp']}}{%endif%}"
+                  maxlength="15"
+                  required
+                />
+              </div>
+              <div class="input-box">
+                <span class="details">DNS1</span>
+                <input
+                  type="text"
+                  name="WifiDns1Ip"
+                  class="inputsSameParameter addUserInputs ipInput"
+                  value="{%if dataType1!=None%}{{ dataType1[0]['WifiDns1Ip']}}{%endif%}"
+                  maxlength="15"
+                  required
+                />
+              </div>
+              <div class="input-box">
+                <span class="details">DNS2</span>
+                <input
+                  type="text"
+                  name="WifiDns2Ip"
+                  class="inputsSameParameter addUserInputs ipInput"
+                  value="{%if dataType1!=None%}{{ dataType1[0]['WifiDns2Ip']}}{%endif%}"
+                  maxlength="15"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                id="applyWLAN1"
+                class="applyButton btn btn-primary"
+              >
+                {{_('Aply')}}
+              </button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/static/javascripts/jquery.min.js"></script>
+<script src="{{url_for('static', filename='/javascripts/hotspotTopBar.js')}}"></script>
+
+{% endblock content %}

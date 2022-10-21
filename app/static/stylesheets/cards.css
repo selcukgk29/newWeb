@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.imageIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.wlanHr {
+  position: relative;
+  width: 450px;
+  border: solid 1px;
+}
+
+.uploadicon {
+  position: relative;
+  top: 20px;
+  left: 0px;
+}
+
+.syslogCenter {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+.selectAuth {
+  flex-direction: column;
+  float: right;
+  position: relative;
+  right: 20px;
+}
+.Countrydropdown {
+  padding-top: 25px;
+}
+.applyButton {
+  width: 100px;
+  float: right;
+  position: relative;
+  margin-top: 20px;
+}
+authBox {
+  display: flex;
+  flex-direction: column;
+}
+.containerNetworkRight {
+  display: flex;
+}
+.container {
+  padding: 20px 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.containerNetwork {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+}
+.input-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 10px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.customizeBackground {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgb(8, 4, 99) 0%,
+    rgba(9, 9, 121, 1) 0%,
+    rgba(8, 7, 106, 0.6362920168067228) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+.alignmentCenter {
+  align-items: center;
+  justify-content: center;
+}
+.alignmentEnd {
+  align-items: flex-end;
+  justify-content: end;
+}
+.alert-danger {
+  width: 400px;
+  text-align: left;
+}
+.margBottom {
+  margin-bottom: 10px;
+}
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+.marginButton {
+  width: 120px;
+  float: right;
+}
+.marginEditButton {
+  position: relative;
+}
+.details {
+  margin-bottom: 3px;
+  font-size: 16px;
+  text-align: center;
+}
+.inputsSameParameter {
+  text-align: center;
+  padding: 8px 20px;
+  margin: 3px 0;
+  border-radius: 4px;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+.marginsslButton {
+  position: relative;
+  left: 45%;
+}
+.dateContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  float: right;
+  align-items: flex-end;
+}
+.row1 {
+  flex-direction: row;
+  align-items: flex-end;
+  padding-left: 5px;
+}
+.alignHeaderLogV {
+  float: left;
+}
+.marginEditPage {
+  position: relative;
+  left: 35%;
+}
+.shicon {
+  float: right;
+  position: relative;
+  top: -43px;
+  left: 78%;
+}
+.shicon1 {
+  position: absolute;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+
+.addUserInputs {
+  width: 100%;
+}
+.input-Aply {
+  position: relative;
+  left: 115px;
+}
+.statusPageInputs {
+  width: 100%;
+}
+.rowDefPage {
+  display: block;
+  flex-wrap: wrap;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+body {
+  width: 100%;
+}
+
+footer {
+  margin-top: 200px;
+}
+.showHide {
+  color: #06458a;
+}
+.table-input {
+  font-size: 14pt;
+  width: 100%;
+  text-align: center;
+  background-color: #94949465;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.drag-area i {
+  color: white;
+  font-size: 72pt;
+}
+.uploadPicon {
+  position: static;
+}
+
+.subTitle {
+  position: relative;
+  font-size: 14px;
+}
+.midLogo {
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  .container,
+  .container-fluid,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #midImg {
+    visibility: visible;
+  }
+  .card-body {
+    padding: 5px;
+  }
+  .col-xl-12 {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  .col-lg-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .form-control {
+    height: calc(1em + 0.75rem + 3px);
+  }
+  .table td .table th {
+    padding: 5px;
+  }
+  .card {
+    word-wrap: normal;
+  }
+  .midLogo {
+    visibility: visible;
+  }
+  .containerNetwork {
+    display: block;
+    position: relative;
+    right: -32%;
+  }
+  .containerNetworkRigth {
+    right: -30%;
+  }
+  .rowDefPage {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  .containerNetworkRight {
+    display: block;
+  }
+  .interfaceContainer {
+    margin-top: 10px;
+  }
+  #timeOutWarningOverlay {
+    /*Session timeout styles */
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    cursor: pointer;
+  }
+
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    font-size: 12pt;
+  }
+}
+
+.dot-pulse {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #9880ff;
+  color: #9880ff;
+  box-shadow: 9999px 0 0 -5px #9880ff;
+  animation: dotPulse 1.5s infinite linear;
+  animation-delay: 0.25s;
+}
+
+.dot-pulse::before,
+.dot-pulse::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #9880ff;
+  color: #9880ff;
+}
+
+.dot-pulse::before {
+  box-shadow: 9984px 0 0 -5px #9880ff;
+  animation: dotPulseBefore 1.5s infinite linear;
+  animation-delay: 0s;
+}
+
+.dot-pulse::after {
+  box-shadow: 10014px 0 0 -5px #9880ff;
+  animation: dotPulseAfter 1.5s infinite linear;
+  animation-delay: 0.5s;
+}
+
+@keyframes dotPulseBefore {
+  0% {
+    box-shadow: 9984px 0 0 -5px #9880ff;
+  }
+  30% {
+    box-shadow: 9984px 0 0 2px #9880ff;
+  }
+  60%,
+  100% {
+    box-shadow: 9984px 0 0 -5px #9880ff;
+  }
+}
+
+@keyframes dotPulse {
+  0% {
+    box-shadow: 9999px 0 0 -5px #9880ff;
+  }
+  30% {
+    box-shadow: 9999px 0 0 2px #9880ff;
+  }
+  60%,
+  100% {
+    box-shadow: 9999px 0 0 -5px #9880ff;
+  }
+}
+
+@keyframes dotPulseAfter {
+  0% {
+    box-shadow: 10014px 0 0 -5px #9880ff;
+  }
+  30% {
+    box-shadow: 10014px 0 0 2px #9880ff;
+  }
+  60%,
+  100% {
+    box-shadow: 10014px 0 0 -5px #9880ff;
+  }
+}
+.stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
+  margin: 0 -5%;
+  overflow: hidden;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

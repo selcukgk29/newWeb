@@ -1,0 +1,109 @@
+.terminal-container {
+  background-color: rgba(0, 0, 0, 0.89);
+  padding-top: 27px;
+  width: 50vw;
+  position: relative;
+  border-radius: 1%;
+}
+
+.terminal-window {
+  background-color: rgba(0, 0, 0, 0.89);
+  height: 50vh;
+  margin: 0 auto;
+  overflow: clip;
+}
+
+
+.window-red-dot {
+  background-color: #ff5f56;
+  border-radius: 100%;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 7px;
+  left: 5px;
+  display: block;
+}
+
+.window-yellow-dot {
+  background-color: #ffbd2e;
+  border-radius: 100%;
+  width: 15px;
+  height: 15px;
+  top: 7px;
+  left: 25px;
+  position: absolute;
+}
+
+.window-green-dot {
+  background-color: #27c93f;
+  border-radius: 100%;
+  width: 15px;
+  height: 15px;
+  top: 7px;
+  left: 45px;
+  position: absolute;
+}
+
+.console-text {
+  color: #04a26a;
+  font-family: monospace;
+  font-size: 15px;
+  text-align: left;
+  position: relative;
+  padding: 0;
+  margin: 0;
+
+}
+
+
+ul.console {
+  float: left;
+  padding-left: 5px;
+  margin-top: -5px;
+
+
+  width: 50vw;
+  height: 50vh;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  list-style: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: initial;
+}
+
+li.console-text {
+  color: #04a26a;
+  font-family: monospace;
+  font-size: 15px;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+li.user-input::before {
+  content: "~$ ";
+}
+
+.console-scrollable::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+
+}
+
+.console-scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(117, 117, 117, 0.89);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.console-scrollable::-webkit-scrollbar {
+  width: 15px;
+  height: 8px;
+
+  background-color: rgba(0, 0, 0, 0.89);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}

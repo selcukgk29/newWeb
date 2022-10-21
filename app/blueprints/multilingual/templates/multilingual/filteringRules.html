@@ -1,0 +1,262 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('Firewall-Filtering Rules')}}</h1>
+  </div>
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#card-body"
+            aria-expanded="true"
+            aria-controls="card-body"
+          >
+            <img
+              src="/static/icons/plus.png"
+              alt=""
+              style="width: 20px; height: 20px"
+            />
+            <span> {{_('Add Rule')}}</span>
+          </a>
+          <img
+            src="/static/icons/chevron-down-solid-removebg-preview.png"
+            alt=""
+            class="imageIcon"
+          />
+        </div>
+        <!-- Card Body -->
+        <div
+          id="card-body"
+          class="card-body-table collapse"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionSidebar"
+        >
+          <div class="container">
+            <div
+              class="h5 mb-0 font-weight-bold text-gray-800"
+              id="mainContainer"
+            >
+              <form
+                action="{{url_for('multilingual.filteringRules')}}"
+                method="POST"
+              >
+                <div class="input-box">
+                  <span class="details">{{_('Name')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter"
+                    type="text"
+                    name="filterName"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+
+                <div class="input-box">
+                  <span class="details"> {{_('Protocol')}}</span>
+                  <select name="protocol" id="option" class="btn btn-secondary">
+                    <option name="protocolOption" value="TCP">TCP</option>
+                    <option name="protocolOption" value="UDP">UDP</option>
+                    <option name="protocolOption" value="icmp">ICMP</option>
+                    <option name="protocolOption" value="ALL">ALL</option>
+                  </select>
+                </div>
+
+                <div class="input-box" id="sourceAddress">
+                  <span class="details"> {{_('Source Adress')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter ipInput"
+                    type="text"
+                    name="sourceAdress"
+                    id="sourceId"
+                    autocomplete="off"
+                    maxlength="18"
+                  />
+                </div>
+                <div class="input-box" id="sourcePort">
+                  <span class="details"> {{_('Source PORT')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter port"
+                    type="number"
+                    name="sourcePort"
+                    autocomplete="off"
+                    maxlength="8"
+                  />
+                </div>
+
+                <div class="input-box" id="afterElement">
+                  <span class="details"> {{_('Destination Adress')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter ipInput"
+                    type="text"
+                    name="destinationAdress"
+                    id="destInput"
+                    autocomplete="off"
+                    maxlength="18"
+                  />
+                </div>
+                <div class="input-box" id="destinationPort">
+                  <span class="details"> {{_('Destination PORT')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter port"
+                    type="number"
+                    name="destinationPort"
+                    id="destInput"
+                    autocomplete="off"
+                    maxlength="8"
+                  />
+                </div>
+                <div class="input-box">
+                  <span class="details"> {{_('Action')}}</span>
+                  <select
+                    name="filterAction"
+                    id="option"
+                    class="btn btn-secondary"
+                  >
+                    <option name="protocolOption" value="ACCEPT">ACCEPT</option>
+                    <option name="protocolOption" value="DROP">DROP</option>
+                  </select>
+                </div>
+                <button type="submit" class="applyButton btn btn-primary">
+                  {{_('Add')}}
+                </button>
+                {% with messages=get_flashed_messages() %} {% if messages %}
+                <div class="input-box">
+                  <div
+                    class="alert alert-danger addUserInputs"
+                    id="danger-alert"
+                  >
+                    {{messages[0]}}
+                  </div>
+                </div>
+                {% endif %} {% endwith %}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#card-body-table"
+            aria-expanded="true"
+            aria-controls="card-body-table"
+          >
+            <img
+              src="/static/icons/table-cells-large-solid-removebg-preview.png"
+              alt=""
+              style="width: 20px; height: 20px"
+            />
+            <span>{{_('Filtering Rules ')}}</span>
+          </a>
+          <img
+            src="/static/icons/chevron-down-solid-removebg-preview.png"
+            alt=""
+            class="imageIcon"
+          />
+        </div>
+        <!-- Card Body -->
+        <div
+          id="card-body-table"
+          class="card-body collapsed"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionSidebar"
+        >
+          <div class="container">
+            <table class="table table-hover table-responsive">
+              <thead>
+                <tr>
+                  <th scope="col">{{_('Name')}}</th>
+                  <th scope="col">{{_('Protocol')}}</th>
+                  <th scope="col">{{_('Source Address')}}</th>
+                  <th scope="col">{{_('Source Port')}}</th>
+                  <th scope="col">{{_('Destination Address')}}</th>
+                  <th scope="col">{{_('Destination Port ')}}</th>
+                  <th scope="col">{{_('Action')}}</th>
+                  <th scope="col">-</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for filterRule in filters%}
+                <tr>
+                  <th>{{filterRule[0]}}</th>
+                  <td>{{filterRule[1]}}</td>
+                  <td>{{filterRule[2]}}</td>
+                  <td>
+                    {%if filterRule[1]=="icmp"%}-{% else
+                    %}{{filterRule[3]}}{%endif%}
+                  </td>
+                  <td>{{filterRule[4]}}</td>
+                  <td>
+                    {%if filterRule[1]=="icmp"%}-{% else
+                    %}{{filterRule[5]}}{%endif%}
+                  </td>
+                  <td>{{filterRule[6]}}</td>
+                  <td>
+                    <form
+                      action="{{url_for('multilingual.filteringEditRules')}}"
+                      method="POST"
+                    >
+                      <button
+                        type="submit button"
+                        class="btn btn-default"
+                        name="EditFilter"
+                        value="{{filterRule[7]}}"
+                      >
+                        <img
+                          src="/static/icons/pen-to-square-solid.png"
+                          alt=""
+                          class="imageIcon"
+                        />
+                      </button>
+                    </form>
+                    <form
+                      action="{{url_for('multilingual.filteringdeleteRules')}}"
+                      method="POST"
+                    >
+                      <button
+                        type="submit button"
+                        class="btn btn-default"
+                        name="DeleteFilter"
+                        value="{{filterRule[7]}}"
+                      >
+                        <img
+                          src="/static/icons/trash-can-solid-removebg-preview.png"
+                          alt=""
+                          class="imageIcon"
+                        />
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{url_for('static', filename='/javascripts/filterPagecontroller.js')}}"></script>
+{% endblock content %}

@@ -1,0 +1,139 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('User Management-User Edit')}}</h1>
+  </div>
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapsed"
+            data-target="#card-body"
+            aria-expanded="false"
+            aria-controls="card-body"
+          >
+            <i class="fa-solid fa-user"></i>
+            <span>{{_('Edit User')}}</span>
+          </a>
+        </div>
+        <!-- Card Body -->
+        <div
+          id="card-body"
+          class="card-body"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionSidebar"
+        >
+          <div class="container">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              <form
+                action="{{url_for('multilingual.userManagementEditUserButton')}}"
+                method="POST"
+              >
+                <span class="details">{{_('Username')}}</span>
+                <div class="input-box alignmentCenter">
+                  <input
+                    class="addUserInputs inputsSameParameter"
+                    type="text"
+                    name="newUsername"
+                    value="{{EditUserInfo[0]}}"
+                    required
+                  />
+                </div>
+                <span class="details">{{_('Password')}}</span>
+                <div class="input-box alignmentEnd">
+                  <input
+                    class="addUserInputs inputsSameParameter"
+                    type="password"
+                    name="newUserPassword"
+                    value="{{EditUserInfo[1]}}"
+                    id="show_hide_password"
+                    required
+                  />
+                  <div class="shicon1">
+                    <a type="button" name="dynamic">
+                      <img
+                        src="/static/icons/eye-solid-removebg-preview.png"
+                        alt=""
+                        class="imageIcon"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <span class="details">Mail</span>
+                <div class="input-box">
+                  <input
+                    class="addUserInputs inputsSameParameter"
+                    type="text"
+                    name="newUserMail"
+                    value="{{EditUserInfo[3]}}"
+                  />
+                </div>
+                <div class="input-box" id="ipText">
+                  <span class="details">{{_('Access IP')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter ipInput"
+                    type="text"
+                    name="newUserIP"
+                    id="newUserIP"
+                    value="{{EditUserInfo[5]}}"
+                    required
+                  />
+                </div>
+
+                <div class="input-box alignmentEnd">
+                  <span class="alignmentEnd margBottom"
+                    >{{_('Authority:')}}</span
+                  >
+                  <select name="auth" id="option" class="btn btn-secondary">
+                    <option name="admin" value="Administrator">
+                      {{_('Administrator')}}
+                    </option>
+                    <option name="Technician" value="Technician">
+                      {{_('Technician')}}
+                    </option>
+                    <option name="Operator" value="Operator">
+                      {{_('Operator')}}
+                    </option>
+                  </select>
+                </div>
+                <div class="input-box alignmentEnd">
+                  <button type="submit" class="btn btn-primary applyButton">
+                    {{_('Edit')}}
+                  </button>
+                </div>
+              </form>
+              {% with messages=get_flashed_messages() %} {% if messages %}
+              <div class="input-box">
+                <div class="alert alert-danger" id="danger-alert">
+                  {{messages[0]}}
+                </div>
+              </div>
+              {% endif %} {% endwith %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{url_for('static', filename='/javascripts/public.js')}}"></script>
+<script src="{{url_for('static', filename='/javascripts/shicon.js')}}"></script>
+
+<script>
+  window.setTimeout(function () {
+    $(".alert")
+      .fadeTo(500, 0)
+      .slideUp(500, function () {
+        $(this).remove();
+      });
+  }, 5000);
+</script>
+{% endblock content %}

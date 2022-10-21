@@ -1,0 +1,8 @@
+.headerFor{
+  float: right;
+}
+.refreshButton {
+  float: right;
+  margin-top: 10px;
+  margin-right: 20px;
+}

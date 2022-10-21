@@ -1,0 +1,79 @@
+{% extends "base.html" %} {% block content %}
+<link rel="stylesheet" href="/static/stylesheets/logsView.css" />
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('Device Log-Logs ')}}</h1>
+  </div>
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12 F">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="refreshButton card-header py-3">
+          <div class="alignHeaderLogV">
+            <h6 class="m-2 font-weight-bold text-primary">
+              {{_('Logs View Page')}}
+            </h6>
+          </div>
+          <div class="dateContainer">
+            <div class="row1" style="display: none">
+              <label class="" for=""> {{_('From:')}}</label>
+              <input
+                class=""
+                type="datetime-local"
+                id="Test_DatetimeLocalFrom"
+              />
+            </div>
+            <div class="row1" style="display: none">
+              <label class="" for="">{{_('Until:')}}</label>
+              <input
+                class=""
+                type="datetime-local"
+                id="Test_DatetimeLocalUntil"
+              />
+            </div>
+            <div class="row1">
+              <a
+                class="btn btn-info input-box"
+                id="downloadButton"
+                href="{{ url_for('downloadlog', filename='logs.txt') }}"
+              >
+                {{_('Export Logs')}}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="h5 mb-0 font-weight-bold text-gray-800">
+            <textarea name="" id="logView" wrap="off" cols="60" rows="100">
+              {{logs}}
+              </textarea
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/static/javascripts/jquery.min.js"></script>
+
+<script>
+  $("#downloadButton").on("click", function () {
+    var sinceDate = $("#Test_DatetimeLocalFrom").val();
+    var untilDate = $("#Test_DatetimeLocalUntil").val();
+
+    $.ajax({
+      url: "/downloadlog",
+      type: "GET",
+      dataType: JSON,
+      data: {
+        since: sinceDate,
+        until: untilDate,
+      },
+      success: function (data) {},
+    });
+  });
+</script>
+{% endblock content %}

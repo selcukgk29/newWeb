@@ -1,0 +1,125 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Firewall{{_('Firewall-NAT')}}</h1>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#card-body-table"
+            aria-expanded="true"
+            aria-controls="card-body-table"
+          >
+            <img
+              src="/static/icons/plus.png"
+              alt=""
+              style="width: 20px; height: 20px"
+            />
+            <span>{{_('Edit Rule')}}</span>
+          </a>
+          <img
+            src="/static/icons/chevron-down-solid-removebg-preview.png"
+            alt=""
+            class="imageIcon"
+          />
+        </div>
+        <!-- Card Body -->
+        <div
+          id="card-body"
+          class="card-body-table collapsed"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionSidebar"
+        >
+          <div class="container">
+            <div
+              class="h5 mb-0 font-weight-bold text-gray-800"
+              id="mainContainer"
+            >
+              <form
+                action="{{url_for('multilingual.natEditButtonRules')}}"
+                method="POST"
+              >
+                <div class="input-box">
+                  <span class="details">{{_('Name')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter"
+                    type="text"
+                    name="RuleName"
+                    autocomplete="off"
+                    value="{{filters[0]}}"
+                    required
+                  />
+                </div>
+                <div class="input-box">
+                  <span class="details">{{_('Outbound Interface')}}</span>
+                  <select name="outbound" class="btn btn-secondary">
+                    <option name="protocolOption" value="eth0">eth0</option>
+                    <option name="protocolOption" value="eth1">eth1</option>
+                    <option name="protocolOption" value="ppp0">ppp0</option>
+                    <option name="protocolOption" value="wlan0">wlan0</option>
+                  </select>
+                </div>
+
+                <div class="input-box" id="afterElement">
+                  <span class="details">{{_('Source Adress')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter ipInput"
+                    type="text"
+                    name="sourceAdress"
+                    id="sourceId"
+                    autocomplete="off"
+                    value="{{filters[2]}}"
+                    required
+                  />
+                </div>
+
+                <div class="input-box" id="destinationPort">
+                  <span class="details">{{_('To Source Adress')}}</span>
+                  <input
+                    class="addUserInputs inputsSameParameter ipInput"
+                    type="text"
+                    name="toSourceAddress"
+                    id="destInput"
+                    autocomplete="off"
+                    value="{{filters[3]}}"
+                    required
+                  />
+                </div>
+                <div class="input-box">
+                  <span class="details">{{_('Action')}}</span>
+                  <select
+                    name="natAction"
+                    id="option"
+                    class="btn btn-secondary"
+                  >
+                    <option name="protocolOption" value="SNAT">SNAT</option>
+                    <option name="protocolOption" value="MASQUERADE">
+                      MASQUERADE
+                    </option>
+                  </select>
+                </div>
+                <button type="submit" class="applyButton btn btn-primary">
+                  Edit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{url_for('static', filename='/javascripts/sideBarToogle.js')}}"></script>
+{% endblock content %}

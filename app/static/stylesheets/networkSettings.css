@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  height: 75vh;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container {
+  min-width: 1100px;
+  min-height: 525px;
+  width: 100%;
+  background: #fff;
+  padding: 25px 25px;
+  border-radius: 5px;
+  border-color: black;
+  border: solid 5px;
+}
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+.container .title::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #9b59b6;
+  bottom: 0;
+  left: 0;
+}
+.container form .network-details {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  margin: 20px 0 12px 0;
+}
+form .network-details .input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2-20px);
+}
+.network-details .input-box .details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.dropdown-box {
+  margin-left: 100px;
+}
+.network-details .input-box input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+form .button input {
+  height: 2.5rem;
+  width: 100px;
+  margin-left: 110px;
+  outline: none;
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}

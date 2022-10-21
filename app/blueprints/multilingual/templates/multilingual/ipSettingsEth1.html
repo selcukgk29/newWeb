@@ -1,0 +1,107 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('Interfaces-ETH1')}}</h1>
+  </div>
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">ETH</h6>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="container">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              <form
+                action="{{url_for('multilingual.ipSettingsEth1')}}"
+                method="POST"
+              >
+                <div class="input-box alignmentEnd">
+                  <select
+                    class="btn btn-secondary"
+                    name="interface"
+                    onchange="location = this.value;"
+                  >
+                    <option
+                      class=""
+                      value="{{url_for('multilingual.ipSettingsEth1')}}"
+                    >
+                      ETH1
+                    </option>
+                    <option
+                      class=""
+                      value="{{url_for('multilingual.ipSettingsEth0')}}"
+                    >
+                      ETH0
+                    </option>
+                    <option
+                      class=""
+                      value="{{url_for('multilingual.ipSettingsWlan')}}"
+                    >
+                      WLAN
+                    </option>
+                    <option
+                      class=""
+                      value="{{url_for('multilingual.ipSettingsGSM')}}"
+                    >
+                      GSM
+                    </option>
+                  </select>
+                </div>
+                <div class="input-box">
+                  <span class="details">Ip Adress:</span>
+                  <input
+                    type="text"
+                    placeholder=""
+                    name="ethIP"
+                    class="inputsSameParameter addUserInputs ipInput"
+                    value="{%if dataType1!=None%}{{ dataType1[0]['LocalIp2']}}{%endif%}"
+                    autocomplete="off"
+                    maxlength="15"
+                    required
+                  />
+                </div>
+                <div class="input-box">
+                  <span class="details">Subnet Mask:</span>
+                  <input
+                    type="text"
+                    name="ethSubnet"
+                    class="inputsSameParameter addUserInputs ipInput"
+                    value="{%if dataType1!=None%}{{ dataType1[0]['Netmask2']}}{%endif%}"
+                    autocomplete="off"
+                    maxlength="15"
+                    required
+                  />
+                </div>
+                <div class="input-box">
+                  <span class="details">Gateway:</span>
+                  <input
+                    type="text"
+                    name="gateway1"
+                    class="inputsSameParameter addUserInputs ipInput"
+                    value="{%if dataType1!=None%}{{ dataType1[0]['Gateway2']}}{%endif%}"
+                    autocomplete="off"
+                    maxlength="15"
+                    required
+                  />
+                </div>
+                <button type="submit" class="applyButton btn btn-primary">
+                  {{_('Apply')}}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Area Chart -->
+  </div>
+</div>
+
+{% endblock content %}

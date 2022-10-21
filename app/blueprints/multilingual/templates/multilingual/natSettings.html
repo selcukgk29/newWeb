@@ -1,0 +1,226 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('Firewall-NAT')}}</h1>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#card-body"
+            aria-expanded="true"
+            aria-controls="card-body"
+          >
+            <img
+              src="/static/icons/plus.png"
+              alt=""
+              style="width: 20px; height: 20px"
+            />
+            <span> {{_('Add Rule')}}</span>
+          </a>
+          <img
+            src="/static/icons/chevron-down-solid-removebg-preview.png"
+            alt=""
+            class="imageIcon"
+          />
+        </div>
+        <!-- Card Body -->
+        <div
+          id="card-body"
+          class="card-body-table collapse"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionSidebar"
+        >
+          <div class="container">
+            <div class="container">
+              <div
+                class="h5 mb-0 font-weight-bold text-gray-800"
+                id="mainContainer"
+              >
+                <form
+                  action="{{url_for('multilingual.natSettings')}}"
+                  method="POST"
+                >
+                  <div class="input-box">
+                    <span class="details">{{_('Name')}}</span>
+                    <input
+                      class="addUserInputs inputsSameParameter"
+                      type="text"
+                      name="RuleName"
+                      autocomplete="off"
+                      required
+                    />
+                  </div>
+                  <div class="input-box">
+                    <span class="details">{{_('Outbound Interface')}}</span>
+                    <select name="outbound" class="btn btn-secondary">
+                      <option name="protocolOption" value="eth0">eth0</option>
+                      <option name="protocolOption" value="eth1">eth1</option>
+                      <option name="protocolOption" value="ppp0">ppp0</option>
+                      <option name="protocolOption" value="wlan0">wlan0</option>
+                    </select>
+                  </div>
+
+                  <div class="input-box" id="afterElement">
+                    <span class="details">{{_('Source Adress')}}</span>
+                    <input
+                      class="addUserInputs inputsSameParameter ipInput"
+                      type="text"
+                      name="sourceAdress"
+                      id="sourceId"
+                      autocomplete="off"
+                      required
+                    />
+                  </div>
+
+                  <div class="input-box" id="destinationPort">
+                    <span class="details">{{_('To Source Adress')}}</span>
+                    <input
+                      class="addUserInputs inputsSameParameter ipInput"
+                      type="text"
+                      name="toSourceAddress"
+                      id="destInput"
+                      autocomplete="off"
+                      required
+                    />
+                  </div>
+                  <div class="input-box">
+                    <span class="details">{{_('Action')}}</span>
+                    <select
+                      name="natAction"
+                      id="option"
+                      class="btn btn-secondary"
+                    >
+                      <option name="protocolOption" value="SNAT">SNAT</option>
+                      <option name="protocolOption" value="MASQUERADE">
+                        MASQUERADE
+                      </option>
+                    </select>
+                  </div>
+                  <button type="submit" class="applyButton btn btn-primary">
+                    {{_('Add')}}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#card-body-table"
+            aria-expanded="true"
+            aria-controls="card-body-table"
+          >
+            <img
+              src="/static/icons/table-cells-large-solid-removebg-preview.png"
+              style="width: 20px; height: 20px"
+            />
+            <span> {{_('NAT Table')}}</span>
+          </a>
+          <img
+            src="/static/icons/chevron-down-solid-removebg-preview.png"
+            alt=""
+            class="imageIcon"
+          />
+        </div>
+        <!-- Card Body -->
+        <div
+          id="card-body-table"
+          class="card-body collapsed"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionSidebar"
+        >
+          <div class="container table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">{{_('Name')}}</th>
+                  <th scope="col">{{_('Source Address ')}}</th>
+                  <th scope="col">{{_('Outbound Interface')}}</th>
+                  <th scope="col">{{_('To Source Address')}}</th>
+                  <th scope="col">{{_('Action')}}</th>
+                  <th scope="col">-</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for filterRule in filters%}
+                <tr>
+                  <th>{{filterRule[0]}}</th>
+                  <td>{{filterRule[2]}}</td>
+                  <td>{{filterRule[1]}}</td>
+                  <td>{{filterRule[3]}}</td>
+                  <td>{{filterRule[4]}}</td>
+                  <td>
+                    <form
+                      action="{{url_for('multilingual.editNatRule')}}"
+                      method="POST"
+                    >
+                      <button
+                        type="submit button"
+                        class="btn btn-default"
+                        name="EditNat"
+                        value="{{filterRule[5]}}"
+                      >
+                        <img
+                          src="/static/icons/pen-to-square-solid.png"
+                          alt=""
+                          class="imageIcon"
+                        />
+                      </button>
+                    </form>
+                    <form
+                      action="{{url_for('multilingual.natDeleteRules')}}"
+                      method="POST"
+                    >
+                      <button
+                        type="submit button"
+                        class="btn btn-default"
+                        name="DeleteNat"
+                        value="{{filterRule[5]}}"
+                      >
+                        <img
+                          src="/static/icons/trash-can-solid-removebg-preview.png"
+                          alt=""
+                          class="imageIcon"
+                        />
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{url_for('static', filename='/javascripts/sideBarToogle.js')}}"></script>
+<script src="{{url_for('static', filename='/javascripts/natpage.js')}}"></script>
+{% endblock content %}

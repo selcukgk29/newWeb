@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  height: 75vh;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container {
+  max-width: 1200px;
+  min-height: 80vh;
+  background: #fff;
+  padding: 25px 25px;
+  border-radius: 5px;
+  border-color: black;
+  border: solid 5px;
+}
+
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.container .title::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #9b59b6;
+  bottom: 0;
+  left: 0;
+}
+
+.container form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 800px;
+  margin: 20px 0 12px 0;
+}
+
+form .network-details .input-box {
+  margin-bottom: 10px;
+  width: calc(100% / 2-20px);
+}
+
+input[type="password"] {
+  width: 150%;
+  padding: 15px 30px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.network-details .input-box .details {
+  display: block;
+  margin: left;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.network-details .input-box input {
+  height: 45px;
+  width: 200%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+form .button input {
+  height: 2rem;
+  width: 50%;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: none;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.restoreButton input {
+  height: 2rem;
+  width: 50%;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: none;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #d10a35, #ce1010);
+}

@@ -1,0 +1,523 @@
+# Turkish translations for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-10-21 11:12+0300\n"
+"PO-Revision-Date: 2022-10-21 11:12+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: tr\n"
+"Language-Team: tr <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:8
+msgid "Firewall-Bridge Connections"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:31
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:31
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:30
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:31
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:27
+msgid "Add Rule"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:54
+msgid "Select interface/interfaces to bridge"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:87
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:169
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:53
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:188
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:55
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsGSM.html:64
+#: app/blueprints/multilingual/templates/multilingual/natEditPage.html:55
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:57
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:162
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:53
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:146
+#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:55
+msgid "Name"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:119
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:129
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:113
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:86
+msgid "Add"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:149
+msgid "Bridge Lists"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:171
+#: app/templates/LeftSideBar.html:137
+msgid "Interfaces"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:105
+msgid " Welcome to Mikrodev Device Web Interface."
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:126
+msgid ""
+"No password set.Please configure a default password\n"
+"                        to protect the web interface!"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:141
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:40
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:66
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:193
+msgid "Username"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:151
+msgid "Create Password"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:172
+msgid "Confirm"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:208
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsEth0.html:94
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsEth1.html:95
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsGSM.html:88
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:164
+msgid "Apply"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:212
+#: app/blueprints/multilingual/templates/multilingual/index.html:5
+#: app/templates/LeftSideBar.html:50
+msgid "Status"
+msgstr "Durum"
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:6
+msgid "Firewall-Filtering Rules"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:64
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:189
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:65
+msgid "Protocol"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:74
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:75
+#: app/blueprints/multilingual/templates/multilingual/natEditPage.html:76
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:77
+msgid "Source Adress"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:85
+msgid "Source PORT"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:96
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:96
+msgid "Destination Adress"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:107
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:106
+msgid "Destination PORT"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:118
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:194
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:118
+#: app/blueprints/multilingual/templates/multilingual/natEditPage.html:101
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:100
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:166
+msgid "Action"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:169
+msgid "Filtering Rules "
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:190
+msgid "Source Address"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:191
+msgid "Source Port"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:192
+msgid "Destination Address"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:193
+msgid "Destination Port "
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:5
+msgid "Firewall-Edit Filtering Rule"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:85
+msgid "Source PORT "
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:134
+#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:91
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:109
+msgid "Edit"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/index.html:17
+msgid "System Information"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/index.html:41
+msgid "Network Information"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsEth0.html:6
+msgid "Interfaces-ETH0"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsEth1.html:5
+msgid "Interfaces-ETH1"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsGSM.html:4
+msgid "Interfaces-GSM"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsGSM.html:74
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:109
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:50
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:79
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:194
+msgid "Password"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:7
+msgid "Interfaces-WLAN"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:118
+msgid "Static Configuration"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:4
+msgid "Interfaces-WLAN HOTSPOT"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:150
+msgid "Start IP"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:161
+msgid "End IP"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:198
+#: app/blueprints/multilingual/templates/multilingual/syslog.html:65
+msgid "Aply"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/login.html:323
+msgid "Mikrodev- DM Series Web Page"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/logsView.html:6
+msgid "Device Log-Logs "
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/logsView.html:17
+msgid "Logs View Page"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/logsView.html:22
+msgid "From:"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/logsView.html:30
+msgid "Until:"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/logsView.html:43
+msgid "Export Logs"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/natEditPage.html:5
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:6
+msgid "Firewall-NAT"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/natEditPage.html:30
+msgid "Edit Rule"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/natEditPage.html:66
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:67
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:164
+msgid "Outbound Interface"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/natEditPage.html:89
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:89
+msgid "To Source Adress"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:143
+msgid "NAT Table"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:163
+msgid "Source Address "
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/natSettings.html:165
+msgid "To Source Address"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:4
+msgid "Firewall-Port Forwarding"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:63
+#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:66
+msgid "Destination Port"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:75
+#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:79
+msgid "To Destination Adress"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:126
+#: app/templates/LeftSideBar.html:178
+msgid "Port Forwards"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:148
+msgid "Destination"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:149
+msgid "To Destination Address"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:5
+msgid " Firewall-Edit Port Forwards"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:30
+msgid " Edit Rule"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:5
+msgid "Update Device-SSL Update"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:17
+msgid "SSL Certificate Update"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:24
+msgid "Last Update"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:35
+msgid ""
+"Please Select SSL\n"
+"                  Certificate"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:59
+#: app/blueprints/multilingual/templates/multilingual/uploadFirmware.html:43
+#: app/blueprints/multilingual/templates/multilingual/uploadProject.html:42
+#: app/templates/LeftSideBar.html:86
+msgid "Upload"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/syslog.html:7
+msgid "Device Log-Syslog"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/syslog.html:19
+msgid "Syslog Server"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/syslog.html:45
+msgid "Remote Server Ip:"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/uploadFirmware.html:10
+msgid "Firmware Update"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/uploadFirmware.html:17
+msgid "Select Firmware File"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/uploadProject.html:9
+msgid "Project Upload"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/uploadProject.html:16
+msgid "Select Project File"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:5
+msgid "User Management-User Edit"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:24
+msgid "Edit User"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:80
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:108
+msgid "Access IP"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:93
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:120
+msgid "Authority:"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:97
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:124
+msgid "Administrator"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:100
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:127
+msgid "Technician"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userEditPage.html:103
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:130
+msgid "Operator"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:23
+#: app/templates/LeftSideBar.html:71
+msgid "User Management"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:48
+msgid "Add User"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:196
+msgid "Authority"
+msgstr ""
+
+#: app/blueprints/multilingual/templates/multilingual/userManagement.html:199
+msgid "Actions"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:100
+msgid "Update Device:"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:106
+msgid "Project Upload:"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:113
+msgid "Firmware Upload:"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:118
+msgid "SSL Certificate Update:"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:128
+msgid "Network"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:152 app/templates/LeftSideBar.html:166
+msgid "Firewall"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:173
+msgid "Filtering Rules"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:183
+msgid "Network Bridge"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:188
+msgid "NAT"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:195
+msgid "Services"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:211 app/templates/LeftSideBar.html:225
+msgid "Device Log"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:230
+msgid "Logs"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:246
+msgid "Addons"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:263
+msgid "Tables"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:277
+msgid "Block Tables"
+msgstr ""
+
+#: app/templates/LeftSideBar.html:279
+msgid "Block Parameters"
+msgstr ""
+
+#: app/templates/base.html:101
+msgid "Session Timeout"
+msgstr ""
+
+#: app/templates/base.html:113
+msgid ""
+"Your session is about to expire. Please click button below to\n"
+"              keep this session current."
+msgstr ""
+
+#: app/templates/base.html:128
+msgid "Close"
+msgstr ""
+
+#: app/templates/logoutModal.html:13
+msgid "Ready to Leave?"
+msgstr ""
+
+#: app/templates/logoutModal.html:25
+msgid ""
+"Select \"Logout\" below if you are ready to end your current session.\n"
+"        "
+msgstr ""
+
+#: app/templates/logoutModal.html:30
+msgid "Cancel"
+msgstr ""
+
+#: app/templates/logoutModal.html:42
+msgid "Logout"
+msgstr ""
+

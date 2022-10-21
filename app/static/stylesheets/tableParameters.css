@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+}
+
+.container {
+  min-width: 1100px;
+  background: #fff;
+  padding: 25px 25px;
+  border-radius: 5px;
+  border-color: black;
+  border: solid 5px;
+}
+
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #9b59b6;
+  bottom: 0;
+  left: 0;
+}
+.row {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form .network-details .input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2-20px);
+}

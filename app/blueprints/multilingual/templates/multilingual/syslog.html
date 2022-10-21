@@ -1,0 +1,111 @@
+{% extends "base.html" %} {% block content %}
+<link rel="stylesheet" href="/static/stylesheets/switchButton.css" />
+<script src="{{url_for('static', filename='/static/vendor/jquery/jquery.min.js')}}"></script>
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('Device Log-Syslog')}}</h1>
+  </div>
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12 F">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="refreshButton card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">
+            {{_('Syslog Server')}}
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="container">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              <form
+                action="syslog"
+                method="POST"
+                enctype="multipart/form-data"
+                id="form"
+              >
+                <div class="input-box alignmentEnd">
+                  <label class="switch btnfloat">
+                    <input
+                      type="checkbox"
+                      name="toggle"
+                      id="toggle"
+                      data-toggle="toggled"
+                      {%if syslogIp|length >0 %}checked{%else%}check{%endif%}
+                    />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="input-box">
+                  <span class="details"
+                    >{{_('Remote Server Ip:')}}</span
+                  >
+                  <input
+                    placeholder=""
+                    type="text"
+                    id="syslogInput"
+                    name="syslogIP"
+                    value="{{syslogIp}}"
+                    class="inputsSameParameter addUserInputs ipInput"
+                    maxlength="15"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  id="syslogAply"
+                  class="btn btn-primary applyButton"
+                  disabled="true"
+                >
+                  {{_('Aply')}}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.setTimeout(function () {
+    $(".alert")
+      .fadeTo(500, 0)
+      .slideUp(500, function () {
+        $(this).remove();
+      });
+  }, 5000);
+</script>
+<script>
+  $("#toggle").change(function () {
+    var mode = $(this).prop("checked");
+    $.ajax({
+      type: "GET",
+      dataType: "JSON",
+      url: "/get_toggled_status",
+      data: "mode=" + mode,
+      success: function (data) {
+        var data = eval(data);
+        message = data.message;
+        success = data.success;
+      },
+    });
+    if (mode == true) {
+      $("#syslogInput")[0].disabled = false;
+      $("#syslogAply").attr("disabled", false);
+    }
+    if (mode == false) {
+      $("#syslogInput")[0].disabled = true;
+      $("#syslogInput")[0].value = "";
+      $("#syslogAply").attr("disabled", true);
+    }
+  });
+</script>
+<script src="{{url_for('static', filename='/javascripts/public.js')}}"></script>
+{% endblock content %}

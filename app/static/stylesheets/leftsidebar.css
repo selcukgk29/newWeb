@@ -1,0 +1,65 @@
+.mynavlink {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  position: relative;
+  left: 18px;
+  line-height: 50px;
+}
+.mynavlink:hover {
+  color: #3b899c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.alignArrow {
+  float: right;
+  position: relative;
+  top: 12px;
+  right: 40px;
+}
+#sideBarIcon {
+  visibility: visible;
+  margin-bottom: 10px;
+}
+#sideBarIcon1 {
+  visibility: hidden;
+}
+#sidebarToggle {
+  display: flex;
+}
+@media only screen and (max-width: 768px) {
+  .imageIcon {
+    position: relative;
+    left: 20px;
+  }
+  .sidebarSpan {
+    display: none;
+  }
+  #statusSpan {
+    display: none;
+  }
+  #statusImage {
+    position: relative;
+    left: 0px;
+  }
+  .alignArrow {
+    display: none;
+  }
+  #sideBarIcon {
+    visibility: hidden;
+    display: none;
+  }
+  #sideBarIcon1 {
+    visibility: visible;
+    margin-bottom: 30px;
+  }
+
+  .userInfoSpan {
+    display: none;
+  }
+  .responsiveAlign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
