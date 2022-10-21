@@ -465,8 +465,8 @@ def filteringEditButtonRules():
 
 
 
-
-@multilingual.route('/firewall/portForwarding', methods=['GET', 'POST'])
+@multilingual.route('/guvelikDuvari/portYonlendirme', defaults={'lang_code':'tr'},methods=['GET', 'POST'])
+@multilingual.route('/firewall/portForwarding', defaults={'lang_code':'en'},methods=['GET', 'POST'])
 def portForwarding():
     if request.method == "POST":
         if len(request.form["portForwards_ToDestinationAdress"].split(":"))<2:
@@ -492,9 +492,8 @@ def portForwardingDelete():
         iptables.DellPortForward(ruleFromSQL)
         return redirect(url_for("multilingual.portForwarding"))
 
-
-
-@multilingual.route('/firewall/portForwarding/editPortForwards', methods=['GET', 'POST'])
+@multilingual.route('/guvelikDuvari/portYonlendirme/duzenlePortYonlendirme', defaults={'lang_code':'tr'},methods=['GET', 'POST'])
+@multilingual.route('/firewall/portForwarding/editPortForwards', defaults={'lang_code':'en'},methods=['GET', 'POST'])
 def editPortForwards():
     if request.method == "POST":
         global portForwardID
@@ -502,7 +501,7 @@ def editPortForwards():
         global oldRulePF
         oldRulePF = fetchInfo("id", portForwardID, "PortForwardTable")
         print(oldRulePF)
-        return render_template('multilingual/portForwardsEditPage.html', userInfo=session['username'], auth=getAuth(session['username']), filters=fetchInfo("id", portForwardID, "PortForwardTable"))
+    return render_template('multilingual/portForwardsEditPage.html', userInfo=session['username'], auth=getAuth(session['username']), filters=fetchInfo("id", portForwardID, "PortForwardTable"))
 
 
 @multilingual.route('/firewall/portForwarding/editButtonPortForwards', methods=['GET', 'POST'])

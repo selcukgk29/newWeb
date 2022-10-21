@@ -52,7 +52,7 @@
                 method="POST"
               >
                 <div class="input-box">
-                  <span class="details">Name{{_('Name')}}</span>
+                  <span class="details">{{_('Name')}}</span>
                   <input
                     class="addUserInputs inputsSameParameter"
                     type="text"
@@ -62,8 +62,9 @@
                     required
                   />
                 </div>
+
                 <div class="input-box" id="sourceAddress">
-                  <span class="details">{{_('Destination Port')}}</span>
+                  <span class="details">{{_('Service Port')}}</span>
                   <input
                     class="addUserInputs inputsSameParameter port"
                     type="text"
@@ -76,7 +77,9 @@
                 </div>
 
                 <div class="input-box" id="afterElement">
-                  <span class="details">{{_('To Destination Adress')}}</span>
+                  <span class="details"
+                    >{{_('Internal Destination Adress(X.X.X.X:port)')}}</span
+                  >
                   <input
                     class="addUserInputs inputsSameParameter ipInput"
                     type="text"
