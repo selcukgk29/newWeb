@@ -1,7 +1,7 @@
 import datetime
 import ipaddress
 import json
-from flask import (render_template, Blueprint, g, redirect, send_file, session,
+from flask import (jsonify, render_template, Blueprint, g, redirect, send_file, send_from_directory, session,
                    request, current_app, abort, flash, url_for)
 from app.controllers.sessionController import sessionControl
 from app.controllers.uploadFunctions import refreshFirmware, restartService
@@ -123,8 +123,8 @@ def login():
         elif getAuth(user[0])[0] == "Administrator":
             session['username'] = user[0]
             print(session)
-            # return render_template('index.html', userInfo=session['username'], netstatus=statuspage.interfaceControl(), auth=getAuth(session['username']), uptime=statuspage.getTimeUp(), time=statuspage.getTime(), ramUsage=statuspage.ramUsage(), dataType1=soc.dataType2)
-            return render_template('multilingual/index.html', userInfo=session['username'], auth=getAuth(session['username']), uptime="statuspage.getTimeUp()", time="statuspage.getTime()", ramUsage="statuspage.ramUsage()", netstatus="statuspage.interfaceControl()", dataType1="asd")
+            return render_template('index.html', userInfo=session['username'], netstatus=statuspage.interfaceControl(), auth=getAuth(session['username']), uptime=statuspage.getTimeUp(), time=statuspage.getTime(), ramUsage=statuspage.ramUsage(), dataType1=soc.dataType2)
+            #return render_template('multilingual/index.html', userInfo=session['username'], auth=getAuth(session['username']), uptime="statuspage.getTimeUp()", time="statuspage.getTime()", ramUsage="statuspage.ramUsage()", netstatus="statuspage.interfaceControl()", dataType1="asd")
 
         elif getIp(user[0])[0] != request.remote_addr:
             print(request.remote_addr)
@@ -490,7 +490,7 @@ def portForwardingDelete():
         deleteSqlFunc(
             request.form["DeletePortForwardRule"], "PortForwardTable", "id")
         iptables.DellPortForward(ruleFromSQL)
-        return redirect(url_for("multilingual.portForwarding"))
+    return redirect(url_for("multilingual.portForwarding"))
 
 @multilingual.route('/guvelikDuvari/portYonlendirme/duzenlePortYonlendirme', defaults={'lang_code':'tr'},methods=['GET', 'POST'])
 @multilingual.route('/firewall/portForwarding/editPortForwards', defaults={'lang_code':'en'},methods=['GET', 'POST'])
@@ -515,14 +515,16 @@ def editButtonPortForwards():
         iptables.DellPortForward(oldRulePF)
         iptables.addPortForward(request.form)
         print("edited")
-        return redirect(url_for("multilingual.portForwarding"))
+    return redirect(url_for("multilingual.portForwarding"))
 
 
-@multilingual.route('/firewall/networkBridge', methods=['GET', 'POST'])
+@multilingual.route('/firewall/networkBridge',defaults={'lang_code':'en'}, methods=['GET', 'POST'])
+@multilingual.route("/guvenlikDuvari/agKoprule",defaults={'lang_code':'tr'},methods=['GET','POST'])
 def networkBridge():
     if request.method == "GET":
         return render_template('multilingual/bridge.html', userInfo=session['username'], auth=getAuth(session['username']), filters=fetchAllData("bridgeTable"))
     if request.method == "POST":
+        print(request.form)
         if fetchInfo("name", request.form["bridgeName"], "bridgeTable") != None:
             flash(
                 "Device "+request.form["bridgeName"]+" already exists; can't create bridge with the same name")
@@ -545,8 +547,6 @@ def networkBridge():
             return redirect(url_for("multilingual.networkBridge"))
         return redirect(url_for("multilingual.networkBridge"))
 
-
-
 @multilingual.route('/firewall/networkBridge/deleteBridge', methods=['GET', 'POST'])
 def deleteBridge():
     if request.method == "POST":
@@ -557,12 +557,13 @@ def deleteBridge():
         return redirect(url_for("multilingual.networkBridge"))
 
 
+
 @multilingual.route('/logsView',defaults={'lang_code':'en'} ,methods=['GET', 'POST'])
 @multilingual.route('/logSayfasi',defaults={'lang_code':'tr'}, methods=['GET', 'POST'])
 def logview():
     if request.method == 'GET':
         sessionControl()           
-        return render_template('multilingual/logsView.html', userInfo=session['username'], auth=getAuth(session['username']), logs=journalctl.journalctl())
+    return render_template('multilingual/logsView.html', userInfo=session['username'], auth=getAuth(session['username']), logs=journalctl.journalctl())
 
 
 @app.route('/downloadlog', methods=['GET', 'POST'])
@@ -573,7 +574,6 @@ def downloadlog():
     path = os.path.join(
         app.config['UPLOAD_FOLDER'], "logs.txt")
     print(path)
-
     return send_file(path, as_attachment=True)
 
 @multilingual.route('/syslogServer',defaults={'lang_code':'en'} ,methods=['GET', 'POST'])
@@ -662,3 +662,78 @@ def webgui():
     sessionControl()           
     if request.method == 'GET':
         return render_template('multilingual/blockparameters.html', dataType0=soc.dataType0, userInfo=session['username'], auth=getAuth(session['username']))
+
+
+# Index page network status cards
+
+
+@app.route('/refreshTime', methods=['GET', 'POST'])
+def refreshTime():
+    if request.method == 'GET':
+        return jsonify('', render_template('Div_systemTime.html', time=statuspage.getTime()))
+
+
+@app.route('/refreshRam', methods=['GET', 'POST'])
+def refreshRam():
+    if request.method == 'GET':
+        return jsonify('', render_template('Div_ramUsage.html', ramUsage=statuspage.ramUsage()))
+
+
+@app.route('/refreshVersion', methods=['GET', 'POST'])
+def refreshVersion():
+    if request.method == 'GET':
+        return jsonify('', render_template('Div_statusversion.html', firmware=soc.dataTypeATVERSION))
+
+
+@app.route('/gsmcard', methods=['GET', 'POST'])
+def gsmcard():
+    if request.method == 'GET':
+        return jsonify('', render_template('networkGsmStatus.html', gsmIP=statuspage.grepGSMip(), ATBAND=soc.dataTypeATBAND, ATCSQ=soc.dataTypeATCSQ))
+
+
+@app.route('/refreshGSMStatus', methods=['GET', 'POST'])
+def refreshGSMStatus():
+    if request.method == 'POST':
+        ATLOCAL = [{
+            "MessageType": "ATCommandData",
+            "AtCommand": "AT+VERSION=?\r",
+        }]
+        global sendToClient
+        sendToClient = json.dumps(ATLOCAL)
+        sleep(1)
+        ATBAND = [{
+            "MessageType": "ATCommandData",
+            "AtCommand": "AT+BAND=?\r",
+        }]
+        sendToClient = json.dumps(ATBAND)
+        sleep(1)
+        ATCSQ = [{
+            "MessageType": "ATCommandData",
+            "AtCommand": "AT+CSQ=?\r",
+        }]
+        sendToClient = json.dumps(ATCSQ)
+        return 'ATCOMMANDS'
+
+
+@app.route('/refreshCard/<cardName>', methods=['GET'])
+def refreshCard(cardName):
+    if request.method == 'GET':
+        if cardName == 'eth0':
+            return jsonify('', render_template('networkstatusETH0.html', dataType1=soc.dataType2, netstatus=statuspage.interfaceControl()))
+        if cardName == 'eth1':
+            return jsonify('', render_template('networkstatusETH1.html', dataType1=soc.dataType2, netstatus=statuspage.interfaceControl()))
+        if cardName == 'wlan0':
+            return jsonify('', render_template('networkstatusWLANcard.html', dataType1=soc.dataType2, netstatus=statuspage.interfaceControl()))
+
+
+@app.before_first_request  # runs before FIRST request (only once)
+def make_session_permanent():
+    session.permanent = True
+    app.permanent_session_lifetime = datetime.timedelta(minutes=15)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico')
+
+soc=socTh()

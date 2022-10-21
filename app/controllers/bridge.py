@@ -33,6 +33,7 @@ def addbridge(*args):
     try:
         if(args[0]["toggle"] == "on"):
             # eth0 varsa oluşturduğun birdge e ekle
+            print(args[0]["toggle"])
             os.system("brctl addif "+args[0]["bridgeName"]+" eth0")
             os.system("ifconfig "+args[0]["bridgeName"] +
                       " "+args[0]["bridgeIP"]+" up")

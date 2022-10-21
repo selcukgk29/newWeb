@@ -1,0 +1,24 @@
+<div class="input-box" id="refreshVersion">
+  <span class="details"> {{_('Firmware Version')}}</span>
+  <div class="stage" id="loading">
+    <div class="dot-pulse"></div>
+  </div>
+  <input
+    type="text"
+    class="statusPageInputs inputsSameParameter"
+    placeholder=""
+    value="{{firmware}}"
+    disabled="true"
+    id="Version"
+  />
+</div>
+<script>
+  var a = document.getElementById("Version").value;
+  if (a == "None") {
+    document.getElementById("Version").remove();
+    document.getElementById("loading").style.visibility = "visible";
+  } else {
+    document.getElementById("Version").style.visibility = "visible";
+    document.getElementById("loading").remove();
+  }
+</script>

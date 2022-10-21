@@ -49,7 +49,10 @@
                 class="h5 mb-0 font-weight-bold text-gray-800"
                 id="mainContainer"
               >
-                <form action="/firewall/networkBridge" method="POST">
+                <form
+                  action="{{url_for('multilingual.networkBridge')}}"
+                  method="POST"
+                >
                   <span class="details"
                     >{{_('Select interface/interfaces to bridge')}}</span
                   >
@@ -181,7 +184,7 @@
                   <td>{{filterRule[2]}}</td>
                   <td>
                     <form
-                      action="/firewall/networkBridge/deleteBridge"
+                      action="{{url_for('multilingual.deleteBridge')}}"
                       method="POST"
                     >
                       <button

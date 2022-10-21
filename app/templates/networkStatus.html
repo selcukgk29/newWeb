@@ -1,0 +1,156 @@
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='/stylesheets/networkInfo.css')}}"
+/>
+<div class="interfaceContainer" id="eth0IntfContainer">
+  <div id="headEth0" class="headerInterface">
+    <span>ETH0</span>
+  </div>
+  <div class="stage" id="loading">
+    <div class="dot-pulse"></div>
+  </div>
+  <div class="containerBody" id="eth0Container" style="display: block">
+    <span id="status">
+      {%if dataType1 != None %}Status:{{netstatus[0]}}{%endif%}</span
+    >
+    <span>
+      {%if dataType1 != None %}IP:{{dataType1[0]["LocalIp2"]}} {%endif%}</span
+    >
+    <span
+      >{%if dataType1 != None %}NETMASK:/{{dataType1[0]["Netmask2"]}}
+      {%endif%}</span
+    >
+    <span
+      >{%if dataType1 != None %}GW:{{dataType1[0]["Gateway2"]}} {%endif%}</span
+    >
+  </div>
+</div>
+
+<div class="interfaceContainer" id="eth1IntfContainer">
+  <div id="headEth1" class="headerInterface">
+    <span>ETH1</span>
+  </div>
+  <div class="stage" id="loading">
+    <div class="dot-pulse"></div>
+  </div>
+  <div class="containerBody" id="eth1Container" style="display: none">
+    <span id="statusEth1">
+      {%if dataType1 != None %}Status: {{netstatus[1]}}{%endif%}</span
+    >
+    <span>
+      {%if dataType1 != None %}IP:{{dataType1[0]["LocalIp2"]}} {%endif%}</span
+    >
+    <span
+      >{%if dataType1 != None %}NETMASK:/{{dataType1[0]["Netmask2"]}}
+      {%endif%}</span
+    >
+    <span
+      >{%if dataType1 != None %}GW:{{dataType1[0]["Gateway2"]}} {%endif%}</span
+    >
+  </div>
+</div>
+
+<div class="interfaceContainer" id="wlanIntfContainer">
+  <div id="wlanHeader" class="headerInterface">
+    <span>WLAN</span>
+  </div>
+  <div class="stage" id="loading">
+    <div class="dot-pulse"></div>
+  </div>
+  <div class="containerBody" id="wlanContainer" style="display: none">
+    <span id="statuswlan"
+      >{%if dataType1 != None %}Status:{{netstatus[1]}}{%endif%}</span
+    >
+    <span>
+      {%if dataType1 != None %}IP:{{dataType1[0]["WifiLocalIp"]}}
+      {%endif%}</span
+    >
+    <span
+      >{%if dataType1 != None %}NETMASK:/{{dataType1[0]["WifiNetmask"]}}
+      {%endif%}</span
+    >
+    <span
+      >{%if dataType1 != None %}GW:{{dataType1[0]["WifiGateway"]}}
+      {%endif%}</span
+    >
+  </div>
+</div>
+<div class="interfaceContainer" id="gsmIntfContainer">
+  <div class="headerInterface">
+    <span>PPP0</span>
+  </div>
+  <div class="stage" id="loading">
+    <div class="dot-pulse"></div>
+  </div>
+  <div class="containerBody" id="GSMrefresh" style="display: none">
+    <span>{%if ATBAND != None %}IP:{{gsmIP}}{%endif%}</span>
+    <span id="gsmBand" onchange="gsmStatus()"
+      >{%if ATBAND != None %}BAND:{{ATBAND}}{%endif%}</span
+    >
+    <span>{%if ATCSQ != None %}CSQ:{{ATCSQ}}{%endif%}</span>
+  </div>
+</div>
+<script src="/static/javascripts/jquery.min.js"></script>
+<script>
+  setInterval(function () {
+    reloadAT();
+    refreshGSMcard();
+  }, 3000);
+  setInterval(function () {
+    refreshETH0card();
+    refreshETH1card();
+    refreshwlancard();
+  }, 5000);
+
+  function reloadAT() {
+    $.ajax({
+      type: "POST",
+      success: function () {},
+      error: function () {},
+      url: "/refreshGSMStatus",
+      cache: false,
+    });
+  }
+
+  function refreshGSMcard() {
+    $.ajax({
+      url: "/gsmcard",
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        $(GSMrefresh).replaceWith(data);
+      },
+    });
+  }
+
+  function refreshETH0card() {
+    $.ajax({
+      url: "/refreshCard/eth0",
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        $(eth0Container).replaceWith(data);
+      },
+    });
+  }
+  function refreshETH1card() {
+    $.ajax({
+      url: "/refreshCard/eth1",
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        $(eth1Container).replaceWith(data);
+      },
+    });
+  }
+  function refreshwlancard() {
+    $.ajax({
+      url: "/refreshCard/wlan0",
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        $(wlanContainer).replaceWith(data);
+      },
+    });
+  }
+</script>

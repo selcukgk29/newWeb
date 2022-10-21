@@ -1,0 +1,64 @@
+<div class="h5 mb-0 font-weight-bold text-gray-800" id="refreshStatusInfo">
+  <div class="input-box">
+    <span class="details">{{_('Device Model')}}</span>
+    <input
+      type="text"
+      class="statusPageInputs addUserInputs inputsSameParameter"
+      placeholder=""
+      value="DM-50"
+      disabled="true"
+    />
+  </div>
+  <div class="input-box">
+    <span class="details">{{_('System Uptime')}}</span>
+    <input
+      type="text"
+      class="statusPageInputs addUserInputs inputsSameParameter"
+      value="{%if uptime!=None%}{{ uptime }}{%endif%}"
+      disabled="true"
+    />
+  </div>
+  {% include "Div_systemTime.html" %} {% include "Div_ramUsage.html" %}
+  {%include "Div_statusversion.html" %}
+</div>
+<script src="/static/javascripts/jquery.min.js"></script>
+<script>
+  setInterval(function () {
+    timeRefresh();
+  }, 1000);
+  setInterval(function () {
+    ramRefresh();
+    refreshVersionF();
+  }, 5000);
+
+  function timeRefresh() {
+    $.ajax({
+      url: "/refreshTime",
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        $(refreshTime).replaceWith(data);
+      },
+    });
+  }
+  function ramRefresh() {
+    $.ajax({
+      url: "/refreshRam",
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        $(ramUsageRefresh).replaceWith(data);
+      },
+    });
+  }
+  function refreshVersionF() {
+    $.ajax({
+      url: "/refreshVersion",
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        $(refreshVersion).replaceWith(data);
+      },
+    });
+  }
+</script>

@@ -3,7 +3,6 @@ import json
 from time import sleep
 import threading
 
-
 class socTh(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
@@ -21,12 +20,18 @@ class socTh(threading.Thread):
     def run(self):
         newSend = ''
         devSend = ''
+        print("Soccckeett thread")
         while 1:
+            print("Soccckeett thread")
             try:
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                print("Soccckeett thread>>>>28")
                 s.bind((self.TCP_IP, self.TCP_PORT))
+                print("Soccckeett thread>>>30")
                 s.listen(1)
+                print("Soccckeett thread>>>32")
                 self.conn, addr = s.accept()
+                print("Soccckeett thread>>>34")
                 self.conn.settimeout(30)
                 print('Listening for client from adress:', addr)
                 with self.conn:
@@ -73,7 +78,7 @@ class socTh(threading.Thread):
                                         if 'DataType' in newdata[0]:
                                             if newdata[0]['DataType'] == 0:
                                                 self.dataType0 = newdata
-                                                #print('DataType0 recived size:', len(self.dataType0))
+                                                print('DataType0 recived size:', len(self.dataType0))
                                         else:
                                             self.dataType1 = newdata
                                             try:
@@ -106,6 +111,7 @@ class socTh(threading.Thread):
                             idx = 0
                             sleep(0.5)
             except Exception as e:
+                print("Exception thread")
                 print(e)
                 sleep(3)
 

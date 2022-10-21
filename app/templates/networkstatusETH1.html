@@ -1,0 +1,31 @@
+<div class="containerBody" id="eth1Container">
+  <span id="statusEth1">
+    {%if dataType1 != None %}Status:{{netstatus[1]}}{%endif%}</span
+  >
+  <span>
+    {%if dataType1 != None %}IP:{{dataType1[0]["LocalIp"]}} {%endif%}</span
+  >
+  <span
+    >{%if dataType1 != None %}NETMASK:/{{dataType1[0]["Netmask"]}}
+    {%endif%}</span
+  >
+  <span>{%if dataType1 != None %}GW:{{dataType1[0]["Gateway"]}} {%endif%}</span>
+  <script>
+    var eth1Status = document.getElementById("statusEth1").innerHTML;
+    if (eth1Status.includes("Status:UP")) {
+      try {
+        document.getElementById("loading").remove();
+      } catch {}
+      document.getElementById("eth1IntfContainer").style.borderColor = "green";
+    } else if (eth0Status.includes("Status:DOWN")) {
+      try {
+        document.getElementById("loading").remove();
+      } catch {}
+      document.getElementById("eth1IntfContainer").style.borderColor = "red";
+    } else {
+      document.getElementById("eth1IntfContainer").style.borderColor = "gray";
+      document.getElementById("loading").style.visibility = "visible";
+      document.getElementById("eth1Container").remove();
+    }
+  </script>
+</div>

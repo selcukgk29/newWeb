@@ -1,0 +1,28 @@
+<div class="containerBody" id="GSMrefresh">
+  <span>{%if ATBAND != None %}IP:{{gsmIP}}{%endif%}</span>
+  <span id="gsmBand">{%if ATBAND != None %}BAND:{{ATBAND}}{%endif%}</span>
+  <span>{%if ATCSQ != None %}CSQ:{{ATCSQ}}{%endif%}</span>
+  <script>
+    var gsm = document.getElementById("gsmBand").innerHTML;
+    if (
+      gsm.includes("BAND:4") ||
+      gsm.includes("BAND:3") ||
+      gsm.includes("BAND:2")
+    ) {
+      try {
+        document.getElementById("loading").remove();
+      } catch {
+        document.getElementById("gsmIntfContainer").style.borderColor = "green";
+      }
+    } else if (gsm.includes("BAND:-1")) {
+      try {
+        document.getElementById("loading").remove();
+      } catch {
+        document.getElementById("gsmIntfContainer").style.borderColor = "red";
+      }
+    } else {
+      document.getElementById("gsmIntfContainer").style.borderColor = "gray";
+      document.getElementById("loading").style.visibility = "visible";
+    }
+  </script>
+</div>
