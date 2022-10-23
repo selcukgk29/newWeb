@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{_('Block Parameters')}}</h1>
+  </div>
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+        <div
+          class="headerFor card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">
+            {% include "webguiConnection.html" %}
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="h5 mb-0 font-weight-bold text-gray-800 table-responsive">
+            <table
+              class="table table-striped table-bordered table-hover table-flex"
+            >
+              <!-- <input
+                  type="text"
+                  id="myInput"
+                  name="search"
+                  onkeyup="myFunction()"
+                  placeholder="Search for names.."
+                /> -->
+              <tr class="odd gradeX">
+                <td>
+                  <table
+                    class="table table-striped table-bordered table-hover"
+                    id="refresh"
+                  ></table>
+                </td>
+                <td>
+                  <table
+                    class="table table-striped table-bordered table-hover"
+                    id="inputs"
+                  ></table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/static/javascripts/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var lang = $("#statusSpan").text();
+    const refreshData = window.setInterval(function () {
+      loadNewData();
+    }, 1000);
+    const buttonsAndIntervals = setInterval(function () {
+      reload();
+    }, 1000);
+    function loadNewData() {
+      $.ajax({
+        url: "/webguivalue",
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+          $(refresh).replaceWith(data);
+        },
+      });
+    }
+
+    function reload() {
+      $.ajax({
+        url: "/connection",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+          $(connection).replaceWith(data);
+          if (data) {
+            console.log(data);
+            $(inputs).load("/webguivalue3");
+            window.clearInterval(buttonsAndIntervals);
+          }
+        },
+      });
+    }
+  });
+</script>
+
+{% endblock content %}

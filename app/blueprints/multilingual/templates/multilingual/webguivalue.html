@@ -1,0 +1,26 @@
+<div id="refresh">
+  <table class="table">
+    <thead>
+      <tr>
+        <th id="lbl">{{_('Block Label')}}</th>
+        <th id="vl">{{_('Value')}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%if dataType0 != None %} {% for index in range(dataType0|length)%}
+      <tr class="no-border">
+        <td>
+          <button type="submit" class="btn btn-light btn-block mobText">
+            {{ dataType0[index]['BlockLineLabel']}}
+          </button>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-light btn-block mobText">
+            {{ dataType0[index]['BlockValue']}}
+          </button>
+        </td>
+      </tr>
+      {%endfor%} {%endif%}
+    </tbody>
+  </table>
+</div>

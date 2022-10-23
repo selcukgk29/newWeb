@@ -1,0 +1,10 @@
+<div id="connection">
+  {% if state=='Connected' %}
+  <p class="refreshButton">{{ state }}</p>
+  {% else %}
+  <div class="d-flex align-items-center">
+    <p class="refreshButton">Connecting...</p>
+    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+  </div>
+  {% endif %}
+</div>

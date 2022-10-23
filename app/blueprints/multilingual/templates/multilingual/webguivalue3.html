@@ -1,0 +1,98 @@
+<div id="inputs">
+  <table class="table table-flex">
+    <thead>
+      <tr>
+        <th>{{_('Send')}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%if dataType0 != None %} {% for index in range(dataType0|length)%}
+      <tr class="no-border">
+        <td class="col">
+          <form
+            class="form-inline"
+            action="{{url_for('multilingual.webguivalue3')}}"
+            id="submitform"
+            method="POST"
+          >
+            <div class="input-group col">
+              <input
+                type="text"
+                name="value"
+                id="numDays"
+                class="numDays form-control"
+                autocomplete="off"
+                required
+              />
+              <button
+                type="submit"
+                class="button"
+                name="index"
+                style="vertical-align: middle"
+                value="{{ index }}"
+              >
+                <span>{{_('Send')}} </span>
+              </button>
+            </div>
+          </form>
+        </td>
+      </tr>
+      {% endfor %} {% endif %}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12pt;
+    padding: 10px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .button span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .button:hover span {
+    padding-right: 10px;
+  }
+
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    e.preventDefault();
+    $("submitform").submit(function (event) {
+      $.ajax({
+        type: "POST",
+        url: "/webguivalue3",
+        data: $("#submitform").serialize(),
+        success: function () {},
+      });
+    });
+  });
+</script>

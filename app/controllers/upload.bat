@@ -1,2 +1,2 @@
-pscp.exe -r -pw QProcess ./* root@192.168.10.26:/root/www/controllers
+pscp.exe -r -pw QProcess ./* root@192.168.1.29:/root/www/app/controllers
 
