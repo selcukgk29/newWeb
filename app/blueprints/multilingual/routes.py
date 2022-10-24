@@ -208,7 +208,7 @@ def sslUpdatePage():
             print(updateTime)
             cursor.execute("Update conf set sslLastUpdate= ?", (updateTime,))
         con.commit()
-        return redirect(url_for('sslUpdatePage'))
+        return redirect(url_for('multilingual.sslUpdatePage'))
 
 
 sendDeviceParameters = 0
@@ -236,19 +236,18 @@ def userManagementAddUser():
                     message = str(validator.emailValid(
                         request.form["newUserMail"]))
                     flash(message)
-                    return redirect('/userManagement')
+                    return redirect(url_for('multilingual.userManagement'))
                 else:
                     cursor.execute('INSERT INTO USERS (username,password,auth,mail,ip) VALUES(?,?,?,?,?)', (
                         request.form['newUsername'], request.form['newUserPassword'], request.form['auth'], request.form['newUserMail'], request.form['newUserIP']))
                     con.commit()
                     print("Added new user!")
-                    return redirect('/userManagement')
+                    return redirect(url_for('multilingual.userManagement'))
             else:
                 flash('Password must be 8-16 characters long and contain one number one special character one uppercase and one lowercase character.')
-            return redirect('/userManagement')
+            return redirect(url_for('multilingual.userManagement'))
         flash('Invalid username! (Username must be min 3 characters.)')
-        return redirect('/userManagement')
-
+        return redirect(url_for('multilingual.userManagement'))
 
 @multilingual.route('/kullaniciYonetimi/kullaniciDuzenle', defaults={'lang_code': 'tr'}, methods=['GET', 'POST'])
 @multilingual.route('/userManagement/editUser', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
@@ -275,25 +274,25 @@ def userManagementEditUserButton():
                     message = str(validator.emailValid(
                         request.form["newUserMail"]))
                     flash(message)
-                    return redirect('/userManagement/editUser')
+                    return redirect(url_for('multilingual.userManagementEditUser'))
                 else:
                     updateUser(request.form['newUsername'], request.form['newUserPassword'],
                                request.form['newUserMail'], request.form['auth'], userId, request.form['newUserIP'])
             else:
                 flash(
                     'Password must be 8-16 characters long and contain one uppercase and one lowercase character.')
-                return redirect('/userManagement/editUser')
+                return redirect(url_for('multilingual.userManagementEditUser'))
         else:
             flash('Invalid username!')
-            return redirect('/userManagement/editUser')
-        return redirect('/userManagement')
+            return redirect(url_for('multilingual.userManagementEditUser'))
+        return redirect(url_for('multilingual.userManagement'))       
 
 
 @multilingual.route('/userManagement/deleteUser', methods=['GET', 'POST'])
 def userManagementDeleteUser():
     if request.method == 'POST':
         deleteSqlFunc(request.form['DeleteUserId'], "USERS", "id")
-        return redirect('/userManagement')
+        return redirect(url_for('multilingual.userManagement'))       
 
 
 @multilingual.route('/ipAyarlari/eth0', defaults={'lang_code': 'tr'}, methods=['GET', 'POST'])
@@ -304,12 +303,13 @@ def ipSettingsEth0():
         print(soc.dataType2)
         return render_template('multilingual/ipSettingsEth0.html', userInfo=session['username'], dataType1=soc.dataType2, auth=getAuth(session['username']))
     if request.method == 'POST':
-        soc.dataType2[0]['LocalIp'] = request.form['ethIP']
-        soc.dataType2[0]['Netmask'] = request.form['ethSubnet']
-        soc.dataType2[0]['Gateway'] = request.form['gateway0']
-        global sendDeviceParameters
-        print(sendDeviceParameters)
-        sendDeviceParameters = json.dumps(soc.dataType2)
+        if(soc.dataType2 != None):
+            soc.dataType2[0]['LocalIp'] = request.form['ethIP']
+            soc.dataType2[0]['Netmask'] = request.form['ethSubnet']
+            soc.dataType2[0]['Gateway'] = request.form['gateway0']
+            global sendDeviceParameters
+            print(sendDeviceParameters)
+            sendDeviceParameters = json.dumps(soc.dataType2)
         return redirect(url_for("multilingual.ipSettingsEth0"))
 
 
@@ -320,12 +320,13 @@ def ipSettingsEth1():
         sessionControl()
         return render_template('multilingual/ipSettingsEth1.html', userInfo=session['username'], dataType1=soc.dataType2, auth=getAuth(session['username']))
     if request.method == 'POST':
-        soc.dataType2[0]['LocalIp2'] = request.form['ethIP']
-        soc.dataType2[0]['Netmask2'] = request.form['ethSubnet']
-        soc.dataType2[0]['Gateway2'] = request.form['gateway1']
-        global sendDeviceParameters
-        sendDeviceParameters = json.dumps(soc.dataType2)
-        print(sendDeviceParameters)
+        if(soc.dataType2 != None):
+            soc.dataType2[0]['LocalIp2'] = request.form['ethIP']
+            soc.dataType2[0]['Netmask2'] = request.form['ethSubnet']
+            soc.dataType2[0]['Gateway2'] = request.form['gateway1']
+            global sendDeviceParameters
+            sendDeviceParameters = json.dumps(soc.dataType2)
+            print(sendDeviceParameters)
         return redirect(url_for("multilingual.ipSettingsEth1"))
 
 
@@ -337,11 +338,12 @@ def ipSettingsGSM():
         return render_template('multilingual/ipSettingsGSM.html', userInfo=session['username'], dataType1=soc.dataType2, auth=getAuth(session['username']))
 
     if request.method == 'POST':
-        soc.dataType2[0]['GprsApn'] = request.form['APN']
-        soc.dataType2[0]['GprsName'] = request.form['Name']
-        soc.dataType2[0]['GprsPssw'] = request.form['Password']
-        global sendDeviceParameters
-        sendDeviceParameters = json.dumps(soc.dataType2)
+        if(soc.dataType2 != None):
+            soc.dataType2[0]['GprsApn'] = request.form['APN']
+            soc.dataType2[0]['GprsName'] = request.form['Name']
+            soc.dataType2[0]['GprsPssw'] = request.form['Password']
+            global sendDeviceParameters
+            sendDeviceParameters = json.dumps(soc.dataType2)
         return redirect(url_for("multilingual.ipSettingsGSM"))
 
 
@@ -353,16 +355,18 @@ def ipSettingsWlan():
         return render_template('multilingual/ipSettingsWlan.html', userInfo=session['username'], wifiState=wlanState(), dataType1=soc.dataType2, auth=getAuth(session['username']))
     if request.method == 'POST':
         # wlan client modda db ye 0 yaz.
-        cursor.execute("Update conf set wlan_state= ?", (0,))
-        con.commit()
-        soc.dataType2[0]['WifiSSID'] = request.form['SSID']
-        soc.dataType2[0]['WifiPssw'] = request.form['Password']
-        soc.dataType2[0]['WifiLocalIp'] = request.form['WifiLocalIp']
-        soc.dataType2[0]['WifiGateway'] = request.form['WifiGateway']
-        soc.dataType2[0]['WifiDns1Ip'] = request.form['WifiDns1Ip']
-        soc.dataType2[0]['WifiDns2Ip'] = request.form['WifiDns2Ip']
-        global sendDeviceParameters
-        sendDeviceParameters = json.dumps(soc.dataType2)
+        if(soc.dataType2 != None):
+            cursor.execute("Update conf set wlan_state= ?", (0,))
+            con.commit()
+            soc.dataType2[0]['WifiSSID'] = request.form['SSID']
+            soc.dataType2[0]['WifiPssw'] = request.form['Password']
+            soc.dataType2[0]['WifiLocalIp'] = request.form['WifiLocalIp']
+            soc.dataType2[0]['WifiGateway'] = request.form['WifiGateway']
+            soc.dataType2[0]['WifiDns1Ip'] = request.form['WifiDns1Ip']
+            soc.dataType2[0]['WifiDns2Ip'] = request.form['WifiDns2Ip']
+            soc.dataType2[0]['WifiMode'] = "0"
+            global sendDeviceParameters
+            sendDeviceParameters = json.dumps(soc.dataType2)
         return redirect(url_for("multilingual.ipSettingsWlan"))
 
 
@@ -374,20 +378,24 @@ def wlanSetting():
         return render_template('multilingual/ipSettingsWlanHotspot.html', userInfo=session['username'], wifiState=wlanState(), dataType1=soc.dataType2, auth=getAuth(session['username']))
     if request.method == 'POST':
         # wlan client modda db ye 1 yaz.
-        cursor.execute("Update conf set wlan_state= ?", (1,))
-        con.commit()
-        soc.dataType2[0]['WifiSSID_Hspot'] = request.form['WifiSSID_Hspot']
-        soc.dataType2[0]['WifiPssw_Hspot'] = request.form['WifiPssw_Hspot']
-        soc.dataType2[0]['WifiCountry'] = request.form['country']
-        soc.dataType2[0]['WifiLeaseTime'] = request.form['WifiLeaseTime']
-        soc.dataType2[0]['WifiLocalIp_Hspot'] = request.form['WifiLocalIp_Hspot']
-        soc.dataType2[0]['WifiStartIp'] = request.form['WifiStartIp']
-        soc.dataType2[0]['WifiEndIp'] = request.form['WifiEndIp']
-        soc.dataType2[0]['WifiDns1Ip'] = request.form['WifiDns1Ip']
-        soc.dataType2[0]['WifiDns2Ip'] = request.form['WifiDns2Ip']
-        global sendDeviceParameters
-        sendDeviceParameters = json.dumps(soc.dataType2)
-        return redirect(url_for("multilingual.wlanSetting"))
+     
+        if(soc.dataType2 != None):
+            cursor.execute("Update conf set wlan_state= ?", (1,))
+            con.commit()
+            soc.dataType2[0]['WifiSSID_Hspot'] = request.form['WifiSSID_Hspot']
+            soc.dataType2[0]['WifiPssw_Hspot'] = request.form['WifiPssw_Hspot']
+            soc.dataType2[0]['WifiLeaseTime'] = request.form['WifiLeaseTime'] 
+            soc.dataType2[0]['WifiCountry'] = request.form['WifiCountry']
+            soc.dataType2[0]['WifiLocalIp_Hspot'] = request.form['WifiLocalIp_Hspot']
+            soc.dataType2[0]['WifiStartIp'] = request.form['WifiStartIp']
+            soc.dataType2[0]['WifiEndIp'] = request.form['WifiEndIp']
+            soc.dataType2[0]['WifiDns1Ip'] = request.form['WifiDns1Ip']
+            soc.dataType2[0]['WifiDns2Ip'] = request.form['WifiDns2Ip']
+            soc.dataType2[0]['WifiMode'] = "2"
+            global sendDeviceParameters
+            sendDeviceParameters = json.dumps(soc.dataType2)
+        return redirect(url_for("multilingual.ipSettingsWlan"))
+
 
 
 @multilingual.route('/ipSettings/wlan/disable', methods=['GET', 'POST'])
@@ -395,11 +403,8 @@ def disable_wlan():
     # wlan client modda db ye 2 yaz.
     cursor.execute("Update conf set wlan_state= ?", (2,))
     con.commit()
-    if soc.dataType2 != None:
-        wifiList = ["WifiSSID", "WifiPssw", "WifiLocalIp", "WifiGateway", "WifiDns1Ip", "WifiDns2Ip", "WifiSSID_Hspot",
-                    "WifiPssw_Hspot", "WifiLeaseTime", "WifiLocalIp_Hspot", "WifiStartIp", "WifiEndIp", "WifiDns1Ip", "WifiDns2Ip"]
-        for i in wifiList:
-            soc.dataType2[0][i] = " "
+    if soc.dataType2 != None: 
+        soc.dataType2[0]['WifiMode'] = "3"
         global sendDeviceParameters
         sendDeviceParameters = json.dumps(soc.dataType2)
     return "Disabled"
@@ -700,7 +705,6 @@ def webgui():
 @app.route('/webguivalue', methods=['POST'])
 def update():
     if request.method == 'POST':
-
         return jsonify('', render_template('multilingual/webguivalue.html', dataType0=soc.dataType0))
     return "Not Connected!", 29
 

@@ -1,1 +1,1 @@
-pscp.exe -r ./* root@192.168.1.29:/root/www/app
+pscp.exe -r ./* root@192.168.10.23:/root/www

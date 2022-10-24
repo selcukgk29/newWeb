@@ -35,15 +35,13 @@
                       name="toggle"
                       id="toggle"
                       data-toggle="toggled"
-                      {%if syslogIp|length >0 %}checked{%else%}check{%endif%}
-                    />
+                      {%if
+                      syslogIp|length>0 %} checked{%else%} check{%endif%} />
                     <span class="slider round"></span>
                   </label>
                 </div>
                 <div class="input-box">
-                  <span class="details"
-                    >{{_('Remote Server Ip:')}}</span
-                  >
+                  <span class="details">{{_('Remote Server Ip:')}}</span>
                   <input
                     placeholder=""
                     type="text"
@@ -54,6 +52,7 @@
                     maxlength="15"
                     autocomplete="off"
                     required
+                    disabled
                   />
                 </div>
                 <button

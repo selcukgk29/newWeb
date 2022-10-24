@@ -54,9 +54,9 @@
               </div>
               <div
                 class="alignWlan btn-group btn-group-toggle"
-                data-toggle="buttons"
+                data-toggle="buttons" name="mode"
               >
-                <label class="btn btn-secondary" id="clientButton">
+                <label class="btn btn-secondary"  id="clientButton">
                   <input
                     type="radio"
                     name="options"
@@ -67,7 +67,7 @@
                   />
                   Client
                 </label>
-                <label class="btn btn-secondary active" id="hotspotButton">
+                <label class="btn btn-secondary active"  id="hotspotButton">
                   <input
                     type="radio"
                     name="options"
@@ -78,7 +78,7 @@
                   />
                   Hotspot
                 </label>
-                <label class="btn btn-secondary" id="disableButton">
+                <label class="btn btn-secondary"  id="disableButton">
                   <input
                     type="radio"
                     name="options"
@@ -113,14 +113,13 @@
                 <span class="details">Country</span>
 
                 <div class="Countrydropdown">
-                  <select class="btn btn-secondary">
-                    <option class="" name="country" value="en">EN</option>
-                    <option class="" name="country" value="gb">GB</option>
-                    <option class="" name="country" value="tr">TR</option>
+                  <select class="btn btn-secondary" name="WifiCountry">
+                    <option class=""  value="EN">EN</option>
+                    <option class=""  value="GB">GB</option>
+                    <option class="" value="TR">TR</option>
                   </select>
                 </div>
               </div>
-
               <div class="input-box">
                 <span class="details">Lease Time</span>
                 <input

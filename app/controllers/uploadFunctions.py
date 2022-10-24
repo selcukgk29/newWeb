@@ -46,6 +46,7 @@ def systemMove(oldCore, newName):
 def refreshFirmware(firmware):
     stopService()   
     sleep(6)
-    systemMove("/root/core", "/root/core_upload")
+    os.system("mkdir /root/oldCore")
+    systemMove("/root/core", "/root/oldCore/core_upload")
     convertion(firmware)  
     startService()
