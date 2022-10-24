@@ -11,7 +11,7 @@
   height: 20px;
 }
 
-.wlanHr {
+.filename {
   width: 50%;
   border: solid 1px;
 }
@@ -232,6 +232,7 @@ footer {
     padding-left: 3px;
     padding-right: 3px;
   }
+
   .col-lg-12 {
     padding-left: 0;
     padding-right: 0;

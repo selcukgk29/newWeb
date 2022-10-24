@@ -3,7 +3,6 @@ import ipaddress
 import json
 from flask import (jsonify, render_template, Blueprint, g, redirect, send_file, send_from_directory, session,
                    request, current_app, abort, flash, url_for)
-from app.controllers.sessionController import sessionControl
 from app.controllers.uploadFunctions import refreshFirmware, restartService
 from app.db.sqlProcess import *
 import sqlite3
@@ -69,6 +68,7 @@ def before_request():
 
 @app.route('/')
 def route():
+    os.system("mkdir /root/conf")
     return redirect('/en')
 
 # İlk webserver açılışında Default username pass değiştirme sayfası route
@@ -78,7 +78,10 @@ def route():
 @multilingual.route("/userGuncelle", defaults={"lang_code": "tr"}, methods=['GET', "POST"])
 def updateDefaultUser():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template("multilingual/changeDefaultPass.html", EditUserInfo=fetchInfo("id", 0, "USERS"))
     if request.method == 'POST':
         if validator.usernameValid(request.form['newUsername']):
@@ -145,7 +148,10 @@ def login():
 @multilingual.route('/index')
 def index():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/index.html', userInfo=session['username'], auth=getAuth(session['username']), uptime="statuspage.getTimeUp()", time="statuspage.getTime()", ramUsage="statuspage.ramUsage()", netstatus="statuspage.interfaceControl()", dataType1="asd")
 
 
@@ -161,7 +167,10 @@ def logout():
 @multilingual.route('/projeYukle', defaults={'lang_code': 'tr'}, methods=['GET', 'POST'])
 def uploadProject():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/uploadProject.html', userInfo=session['username'], auth=getAuth(session['username']))
     if request.method == 'POST':
         uploaded_file = request.files['project']
@@ -178,7 +187,10 @@ def uploadProject():
 @multilingual.route('/uploadFirmware', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 def uploadFirmware():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/uploadFirmware.html', userInfo=session['username'], auth=getAuth(session['username']))
     if request.method == 'POST':
         uploaded_file = request.files['firmware']
@@ -196,7 +208,10 @@ def uploadFirmware():
 @multilingual.route('/sslUpdatePage', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 def sslUpdatePage():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/sslUpdatePage.html', userInfo=session['username'], auth=getAuth(session['username']), sslUpdateTime=(sslLastUpdate()[0])[:16])
     if request.method == 'POST':
         uploaded_file = request.files['sslUpdate']
@@ -218,7 +233,10 @@ sendDeviceParameters = 0
 @multilingual.route('/kullaniciYonetimi', defaults={'lang_code': 'tr'}, methods=['GET', 'POST'])
 def userManagement():
     if request.method == 'GET':
-        sessionControl()
+        try:
+           session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/userManagement.html', userInfo=session['username'], auth=getAuth(session['username']), users=fetchAllData("USERS"))
     if request.method == 'POST':
         if request.form['DeleteUserId']:
@@ -259,7 +277,10 @@ def userManagementEditUser():
         userInfo = fetchInfo("id", userId, "USERS")
         return render_template('multilingual/userEditPage.html', auth=getAuth(session['username']), EditUserInfo=userInfo)
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         print(userId)
         userInfo = fetchInfo("id", userId, "USERS")
         return render_template('multilingual/userEditPage.html', auth=getAuth(session['username']), EditUserInfo=userInfo)
@@ -299,7 +320,10 @@ def userManagementDeleteUser():
 @multilingual.route('/ipSettings/eth0', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 def ipSettingsEth0():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         print(soc.dataType2)
         return render_template('multilingual/ipSettingsEth0.html', userInfo=session['username'], dataType1=soc.dataType2, auth=getAuth(session['username']))
     if request.method == 'POST':
@@ -317,7 +341,10 @@ def ipSettingsEth0():
 @multilingual.route('/ipSettings/eth1', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 def ipSettingsEth1():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/ipSettingsEth1.html', userInfo=session['username'], dataType1=soc.dataType2, auth=getAuth(session['username']))
     if request.method == 'POST':
         if(soc.dataType2 != None):
@@ -334,7 +361,10 @@ def ipSettingsEth1():
 @multilingual.route('/ipSettings/gsm', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 def ipSettingsGSM():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/ipSettingsGSM.html', userInfo=session['username'], dataType1=soc.dataType2, auth=getAuth(session['username']))
 
     if request.method == 'POST':
@@ -351,7 +381,10 @@ def ipSettingsGSM():
 @multilingual.route('/ipSettings/wlan', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 def ipSettingsWlan():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/ipSettingsWlan.html', userInfo=session['username'], wifiState=wlanState(), dataType1=soc.dataType2, auth=getAuth(session['username']))
     if request.method == 'POST':
         # wlan client modda db ye 0 yaz.
@@ -374,7 +407,10 @@ def ipSettingsWlan():
 @multilingual.route('/ipSettings/wlan/hotspot', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 def wlanSetting():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/ipSettingsWlanHotspot.html', userInfo=session['username'], wifiState=wlanState(), dataType1=soc.dataType2, auth=getAuth(session['username']))
     if request.method == 'POST':
         # wlan client modda db ye 1 yaz.
@@ -427,7 +463,10 @@ def filteringRules():
             os.system("iptables-save > /root/conf/rules.v4")
         return redirect(url_for("multilingual.filteringRules"))
     if request.method == "GET":
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/filteringRules.html', userInfo=session['username'], auth=getAuth(session['username']), filters=fetchAllData("filterTable"))
 
 
@@ -490,9 +529,9 @@ def filteringEditButtonRules():
 @multilingual.route('/firewall/portForwarding', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 def portForwarding():
     if request.method == "POST":
-        if len(request.form["portForwards_ToDestinationAdress"].split(":")) < 2:
+        if request.form["portForwards_ToDestinationAdress"].split(":")[1]=="":
             flash(
-                "Please enter correct ToDestinationAddress.Write spesific port!(X.X.X.X:<portNumber>)")
+                "Please enter correct internal address.Write spesific port!(X.X.X.X:<portNumber>)")
             return redirect(url_for("multilingual.portForwarding"))
         addPortForwad(request.form["portForwardingName"], request.form["portForwards_DestinationPort"],
                       request.form["portForwards_ToDestinationAdress"])
@@ -501,6 +540,10 @@ def portForwarding():
         return redirect(url_for("multilingual.portForwarding"))
 
     if request.method == "GET":
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/portForwards.html', userInfo=session['username'], auth=getAuth(session['username']), filters=fetchAllData("PortForwardTable"))
 
 
@@ -544,7 +587,11 @@ def editButtonPortForwards():
 @multilingual.route('/firewall/networkBridge', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 @multilingual.route("/guvenlikDuvari/agKoprule", defaults={'lang_code': 'tr'}, methods=['GET', 'POST'])
 def networkBridge():
-    if request.method == "GET":
+    if request.method == "GET":  
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/bridge.html', userInfo=session['username'], auth=getAuth(session['username']), filters=fetchAllData("bridgeTable"))
     if request.method == "POST":
         print(request.form)
@@ -552,18 +599,24 @@ def networkBridge():
             flash(
                 "Device "+request.form["bridgeName"]+" already exists; can't create bridge with the same name")
             return redirect(url_for("multilingual.networkBridge"))
+     
         # Interface başında boşluk var !! ( eth1)
         a = fetchInfo("interfaces", " eth0", "bridgeTable")
         b = fetchInfo("interfaces", " eth1", "bridgeTable")
         c = fetchInfo("interfaces", " eth0 eth1", "bridgeTable")
+  
         if a == None and b == None and c == None:  # Flash messages bridge
-            bridge.addbridge(request.form)
-        elif a != None and b == None and c != None:
-            bridge.addbridge(request.form)
-        elif a == None and b != None and c != None:
-            bridge.addbridge(request.form)
-        elif a == None and b == None:
-            bridge.addbridge(request.form)
+            bridge.addbridge(request.form) 
+            print("hiçbiri yoksa birini ekle ")
+        elif a == None and b==None:
+            bridge.addbridge(request.form)    
+            print("c yi ekle ekledi ")  
+        elif c != None and (b!=None or a!=None):
+            bridge.addbridge(request.form)    
+            print("eth1 ekledi ")       
+        elif c == None and b==None:
+            bridge.addbridge(request.form)    
+            print("eth1 ekledi ")   
         else:
             flash(
                 "Device eth is already a member of a bridge; can't enslave it to bridge.")
@@ -585,7 +638,10 @@ def deleteBridge():
 @multilingual.route('/logSayfasi', defaults={'lang_code': 'tr'}, methods=['GET', 'POST'])
 def logview():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
     return render_template('multilingual/logsView.html', userInfo=session['username'], auth=getAuth(session['username']), logs=journalctl.journalctl())
 
 
@@ -615,7 +671,10 @@ def webguiconnection():
 @multilingual.route('/syslogSunucu', defaults={'lang_code': 'tr'}, methods=['GET', 'POST'])
 def syslog():
     if request.method == 'GET':
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/syslog.html', userInfo=session['username'], syslogIp=syslogFunc.syslogRead()[5:], auth=getAuth(session['username']))
     if request.method == 'POST':
         try:
@@ -633,7 +692,10 @@ def syslog():
 @multilingual.route('/firewall/nat', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 def natSettings():
     if request.method == "GET":
-        sessionControl()
+        try:
+            session['username']
+        except:
+            return redirect('/')
         return render_template('multilingual/natSettings.html', userInfo=session['username'], auth=getAuth(session['username']), filters=fetchAllData("natTable"))
     if request.method == "POST":
         if(request.form["natAction"] == "SNAT"):
@@ -694,7 +756,10 @@ sendToClient = 0
 @multilingual.route('/blockparameters', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 @multilingual.route('/blokparametreleri', defaults={'lang_code': 'tr'}, methods=['GET', 'POST'])
 def webgui():
-    sessionControl()
+    try:
+        session['username']
+    except:
+        return redirect('/')
     if request.method == 'GET':
         print(soc.dataType0)
         return render_template('multilingual/blockparameters.html', dataType0=soc.dataType0, userInfo=session['username'], auth=getAuth(session['username']))
