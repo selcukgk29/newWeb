@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-21 11:12+0300\n"
-"PO-Revision-Date: 2022-10-21 11:12+0300\n"
+"POT-Creation-Date: 2022-10-25 11:16+0300\n"
+"PO-Revision-Date: 2022-10-25 11:16+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: tr\n"
 "Language-Team: tr <LL@li.org>\n"
@@ -18,230 +18,246 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
+#: app/blueprints/multilingual/templates/multilingual/blockparameters.html:5
+#: app/templates/LeftSideBar.html:279
+msgid "Block Parameters"
+msgstr "Blok Parametreleri"
+
 #: app/blueprints/multilingual/templates/multilingual/bridge.html:8
 msgid "Firewall-Bridge Connections"
-msgstr ""
+msgstr "Güvenlik Duvarı-Ağ Köprüsü"
 
 #: app/blueprints/multilingual/templates/multilingual/bridge.html:31
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:31
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:29
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:30
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:31
 #: app/blueprints/multilingual/templates/multilingual/portForwards.html:27
 msgid "Add Rule"
-msgstr ""
+msgstr "Kural Ekle"
 
-#: app/blueprints/multilingual/templates/multilingual/bridge.html:54
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:57
 msgid "Select interface/interfaces to bridge"
-msgstr ""
+msgstr "Lütfen köprülenecek arabirim/arabirimleri seçiniz."
 
-#: app/blueprints/multilingual/templates/multilingual/bridge.html:87
-#: app/blueprints/multilingual/templates/multilingual/bridge.html:169
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:53
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:188
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:90
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:174
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:54
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:189
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:55
 #: app/blueprints/multilingual/templates/multilingual/ipSettingsGSM.html:64
 #: app/blueprints/multilingual/templates/multilingual/natEditPage.html:55
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:57
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:162
 #: app/blueprints/multilingual/templates/multilingual/portForwards.html:53
-#: app/blueprints/multilingual/templates/multilingual/portForwards.html:146
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:148
 #: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:55
 msgid "Name"
-msgstr ""
+msgstr "Ad"
 
-#: app/blueprints/multilingual/templates/multilingual/bridge.html:119
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:129
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:122
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:130
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:113
-#: app/blueprints/multilingual/templates/multilingual/portForwards.html:86
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:98
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
-#: app/blueprints/multilingual/templates/multilingual/bridge.html:149
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:152
 msgid "Bridge Lists"
-msgstr ""
+msgstr "Köprü Listesi"
 
-#: app/blueprints/multilingual/templates/multilingual/bridge.html:171
+#: app/blueprints/multilingual/templates/multilingual/bridge.html:176
 #: app/templates/LeftSideBar.html:137
 msgid "Interfaces"
-msgstr ""
+msgstr "Ağ Arabirimleri"
 
 #: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:105
 msgid " Welcome to Mikrodev Device Web Interface."
-msgstr ""
+msgstr "Mikrodev Web Arayüzüne Hoşgeldiniz."
 
 #: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:126
 msgid ""
 "No password set.Please configure a default password\n"
 "                        to protect the web interface!"
-msgstr ""
+msgstr "Henüz parola ayarlamadınız.Lütfen cihaz güvenliği için önce parola ayarlayınız."
 
-#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:141
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:144
 #: app/blueprints/multilingual/templates/multilingual/userEditPage.html:40
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:66
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:193
 msgid "Username"
-msgstr ""
+msgstr "Kullanıcı Adı"
 
-#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:151
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:154
 msgid "Create Password"
-msgstr ""
+msgstr "Parola oluştur"
 
-#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:172
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:175
 msgid "Confirm"
-msgstr ""
+msgstr "Onayla"
 
-#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:208
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:211
 #: app/blueprints/multilingual/templates/multilingual/ipSettingsEth0.html:94
 #: app/blueprints/multilingual/templates/multilingual/ipSettingsEth1.html:95
 #: app/blueprints/multilingual/templates/multilingual/ipSettingsGSM.html:88
-#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:164
 msgid "Apply"
-msgstr ""
+msgstr "Uygula"
 
-#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:212
+#: app/blueprints/multilingual/templates/multilingual/changeDefaultPass.html:216
 #: app/blueprints/multilingual/templates/multilingual/index.html:5
 #: app/templates/LeftSideBar.html:50
 msgid "Status"
 msgstr "Durum"
 
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:6
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:5
 msgid "Firewall-Filtering Rules"
-msgstr ""
+msgstr "Güvenlik Duvarı-Filtreleme Kuralları"
 
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:64
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:189
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:65
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:190
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:65
 msgid "Protocol"
-msgstr ""
+msgstr "Prokotol"
 
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:74
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:75
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:75
 #: app/blueprints/multilingual/templates/multilingual/natEditPage.html:76
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:77
 msgid "Source Adress"
-msgstr ""
+msgstr "Kaynak Adres"
 
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:85
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:86
 msgid "Source PORT"
-msgstr ""
+msgstr "Kaynak Port"
 
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:96
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:97
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:96
 msgid "Destination Adress"
-msgstr ""
+msgstr "Hedef Adress"
 
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:107
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:108
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:106
 msgid "Destination PORT"
-msgstr ""
+msgstr "Heder Port"
 
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:118
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:194
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:119
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:195
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:118
 #: app/blueprints/multilingual/templates/multilingual/natEditPage.html:101
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:100
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:166
 msgid "Action"
-msgstr ""
+msgstr "Düzenle/Sil"
 
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:169
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:170
 msgid "Filtering Rules "
-msgstr ""
-
-#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:190
-msgid "Source Address"
-msgstr ""
+msgstr "Filtreleme Kuralları"
 
 #: app/blueprints/multilingual/templates/multilingual/filteringRules.html:191
-msgid "Source Port"
-msgstr ""
+msgid "Source Address"
+msgstr "Kaynak Adres"
 
 #: app/blueprints/multilingual/templates/multilingual/filteringRules.html:192
-msgid "Destination Address"
-msgstr ""
+msgid "Source Port"
+msgstr "Kaynak Port"
 
 #: app/blueprints/multilingual/templates/multilingual/filteringRules.html:193
+msgid "Destination Address"
+msgstr "Hedef Adress"
+
+#: app/blueprints/multilingual/templates/multilingual/filteringRules.html:194
 msgid "Destination Port "
-msgstr ""
+msgstr "Hedef Port"
 
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:5
 msgid "Firewall-Edit Filtering Rule"
-msgstr ""
+msgstr "Güvenlik Duvarı-Filtreleme Kurallarını Düzenle"
 
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:85
 msgid "Source PORT "
-msgstr ""
+msgstr "Kaynak Port"
 
 #: app/blueprints/multilingual/templates/multilingual/filteringRulesEdit.html:134
-#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:91
+#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:104
 #: app/blueprints/multilingual/templates/multilingual/userEditPage.html:109
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
 
 #: app/blueprints/multilingual/templates/multilingual/index.html:17
 msgid "System Information"
-msgstr ""
+msgstr "Sistem Bilgisi"
 
-#: app/blueprints/multilingual/templates/multilingual/index.html:41
+#: app/blueprints/multilingual/templates/multilingual/index.html:39
 msgid "Network Information"
-msgstr ""
+msgstr "Ağ Bilgisi"
 
 #: app/blueprints/multilingual/templates/multilingual/ipSettingsEth0.html:6
-msgid "Interfaces-ETH0"
-msgstr ""
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:6
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan342.html:10
+msgid "Interfaces-WLAN"
+msgstr "Ağ Arabirimi-WLAN"
 
 #: app/blueprints/multilingual/templates/multilingual/ipSettingsEth1.html:5
 msgid "Interfaces-ETH1"
-msgstr ""
+msgstr "Ağ Arabirimi-ETH1"
 
 #: app/blueprints/multilingual/templates/multilingual/ipSettingsGSM.html:4
 msgid "Interfaces-GSM"
-msgstr ""
+msgstr "Ağ Arabirimi-GSM"
 
 #: app/blueprints/multilingual/templates/multilingual/ipSettingsGSM.html:74
-#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:109
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:119
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan342.html:112
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:119
 #: app/blueprints/multilingual/templates/multilingual/userEditPage.html:50
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:79
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:194
 msgid "Password"
-msgstr ""
+msgstr "Parola"
 
-#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:7
-msgid "Interfaces-WLAN"
-msgstr ""
-
-#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:118
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan.html:133
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlan342.html:120
 msgid "Static Configuration"
-msgstr ""
+msgstr "Statik Yapılandırma"
 
-#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:4
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:6
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot2.html:8
 msgid "Interfaces-WLAN HOTSPOT"
-msgstr ""
+msgstr "Ağ Arabirimi-WLAN HOTSPOT"
 
-#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:150
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:130
+msgid "Country"
+msgstr "Ülke"
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:162
+msgid "DHCP Server"
+msgstr "DHCP Sunucu"
+
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:165
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot2.html:162
 msgid "Start IP"
-msgstr ""
+msgstr "Başlangıç IP"
 
-#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:161
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:176
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot2.html:173
 msgid "End IP"
-msgstr ""
+msgstr "Bitiş IP"
 
-#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot.html:198
-#: app/blueprints/multilingual/templates/multilingual/syslog.html:65
+#: app/blueprints/multilingual/templates/multilingual/ipSettingsWlanHotspot2.html:210
+#: app/blueprints/multilingual/templates/multilingual/syslog.html:64
 msgid "Aply"
-msgstr ""
+msgstr "Uygula"
 
 #: app/blueprints/multilingual/templates/multilingual/login.html:323
 msgid "Mikrodev- DM Series Web Page"
-msgstr ""
+msgstr "Mikrodev- DM Serisi Web Sayfası"
 
 #: app/blueprints/multilingual/templates/multilingual/logsView.html:6
 msgid "Device Log-Logs "
-msgstr ""
+msgstr "Cihaz Kaydı-Kayıtlar"
 
 #: app/blueprints/multilingual/templates/multilingual/logsView.html:17
 msgid "Logs View Page"
-msgstr ""
+msgstr "Kayıt Sayfası"
 
 #: app/blueprints/multilingual/templates/multilingual/logsView.html:22
 msgid "From:"
@@ -253,145 +269,157 @@ msgstr ""
 
 #: app/blueprints/multilingual/templates/multilingual/logsView.html:43
 msgid "Export Logs"
-msgstr ""
+msgstr "Kayıtları indir"
 
 #: app/blueprints/multilingual/templates/multilingual/natEditPage.html:5
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:6
 msgid "Firewall-NAT"
-msgstr ""
+msgstr "Güvenlik Duvarı-NAT"
 
 #: app/blueprints/multilingual/templates/multilingual/natEditPage.html:30
 msgid "Edit Rule"
-msgstr ""
+msgstr "Kuralı Düzenle"
 
 #: app/blueprints/multilingual/templates/multilingual/natEditPage.html:66
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:67
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:164
 msgid "Outbound Interface"
-msgstr ""
+msgstr "Çıkış Interface"
 
 #: app/blueprints/multilingual/templates/multilingual/natEditPage.html:89
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:89
 msgid "To Source Adress"
-msgstr ""
+msgstr "Kaynak Adres'e"
 
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:143
 msgid "NAT Table"
-msgstr ""
+msgstr "NAT Tablosu"
 
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:163
 msgid "Source Address "
-msgstr ""
+msgstr "Kaynak Adresi"
 
 #: app/blueprints/multilingual/templates/multilingual/natSettings.html:165
 msgid "To Source Address"
-msgstr ""
+msgstr "Kaynak Adres'e"
 
 #: app/blueprints/multilingual/templates/multilingual/portForwards.html:4
 msgid "Firewall-Port Forwarding"
-msgstr ""
+msgstr "Güvenlik Duvarı-Port Yönlendirme"
 
 #: app/blueprints/multilingual/templates/multilingual/portForwards.html:63
-#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:66
-msgid "Destination Port"
-msgstr ""
+#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:67
+msgid "Service Port"
+msgstr "Servis Portu"
 
-#: app/blueprints/multilingual/templates/multilingual/portForwards.html:75
-#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:79
-msgid "To Destination Adress"
-msgstr ""
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:76
+#: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:81
+msgid "Internal Destination Adress(X.X.X.X:port)"
+msgstr "İç hedef Adressi(X.X.X.X:port)"
 
-#: app/blueprints/multilingual/templates/multilingual/portForwards.html:126
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:128
 #: app/templates/LeftSideBar.html:178
 msgid "Port Forwards"
-msgstr ""
+msgstr "Port Yönlendirmeleri"
 
-#: app/blueprints/multilingual/templates/multilingual/portForwards.html:148
-msgid "Destination"
-msgstr ""
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:150
+msgid "Service Port "
+msgstr "Servis Portu"
 
-#: app/blueprints/multilingual/templates/multilingual/portForwards.html:149
+#: app/blueprints/multilingual/templates/multilingual/portForwards.html:151
 msgid "To Destination Address"
-msgstr ""
+msgstr "Hedef Adres'e"
 
 #: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:5
 msgid " Firewall-Edit Port Forwards"
-msgstr ""
+msgstr "Güvenlik Duvarı-Port Yönlendirmelerini Düzenle"
 
 #: app/blueprints/multilingual/templates/multilingual/portForwardsEditPage.html:30
 msgid " Edit Rule"
-msgstr ""
+msgstr "Kuralı Düzenle"
 
 #: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:5
 msgid "Update Device-SSL Update"
-msgstr ""
+msgstr "Cihaz Güncelleme-SSL Güncelle"
 
 #: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:17
+#: app/templates/LeftSideBar.html:118
 msgid "SSL Certificate Update"
-msgstr ""
+msgstr "SSL Sertifika Güncelle"
 
 #: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:24
 msgid "Last Update"
-msgstr ""
+msgstr "Son Güncelleme"
 
 #: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:35
 msgid ""
 "Please Select SSL\n"
 "                  Certificate"
-msgstr ""
+msgstr "Lütfen geçerli SSL Sertifikasını seçiniz."
 
 #: app/blueprints/multilingual/templates/multilingual/sslUpdatePage.html:59
 #: app/blueprints/multilingual/templates/multilingual/uploadFirmware.html:43
 #: app/blueprints/multilingual/templates/multilingual/uploadProject.html:42
 #: app/templates/LeftSideBar.html:86
 msgid "Upload"
-msgstr ""
+msgstr "Yükle"
+
+#: app/blueprints/multilingual/templates/multilingual/statusRefresh.html:3
+#: app/templates/statusRefresh.html:3
+msgid "Device Model"
+msgstr "Cihaz Modeli"
+
+#: app/blueprints/multilingual/templates/multilingual/statusRefresh.html:13
+#: app/templates/statusRefresh.html:13
+msgid "System Uptime"
+msgstr "Sistem Zamanı"
 
 #: app/blueprints/multilingual/templates/multilingual/syslog.html:7
 msgid "Device Log-Syslog"
-msgstr ""
+msgstr "Cihaz Kaydı-Syslog"
 
 #: app/blueprints/multilingual/templates/multilingual/syslog.html:19
 msgid "Syslog Server"
-msgstr ""
+msgstr "Syslog Sunucu"
 
-#: app/blueprints/multilingual/templates/multilingual/syslog.html:45
+#: app/blueprints/multilingual/templates/multilingual/syslog.html:44
 msgid "Remote Server Ip:"
-msgstr ""
+msgstr "Uzak Sunucu Ip:"
 
 #: app/blueprints/multilingual/templates/multilingual/uploadFirmware.html:10
 msgid "Firmware Update"
-msgstr ""
+msgstr "Firmware Güncelle"
 
 #: app/blueprints/multilingual/templates/multilingual/uploadFirmware.html:17
 msgid "Select Firmware File"
-msgstr ""
+msgstr "Firmware Dosyası Seçiniz."
 
 #: app/blueprints/multilingual/templates/multilingual/uploadProject.html:9
+#: app/templates/LeftSideBar.html:106
 msgid "Project Upload"
-msgstr ""
+msgstr "Proje Yükle"
 
 #: app/blueprints/multilingual/templates/multilingual/uploadProject.html:16
 msgid "Select Project File"
-msgstr ""
+msgstr "Proje Dosyası Seçiniz."
 
 #: app/blueprints/multilingual/templates/multilingual/userEditPage.html:5
 msgid "User Management-User Edit"
-msgstr ""
+msgstr "Kullanıcı Yönetimi- Kullanıcı Düzenle"
 
 #: app/blueprints/multilingual/templates/multilingual/userEditPage.html:24
 msgid "Edit User"
-msgstr ""
+msgstr "Kullanıcı Düzenle"
 
 #: app/blueprints/multilingual/templates/multilingual/userEditPage.html:80
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:108
 msgid "Access IP"
-msgstr ""
+msgstr "Erişim IP"
 
 #: app/blueprints/multilingual/templates/multilingual/userEditPage.html:93
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:120
 msgid "Authority:"
-msgstr ""
+msgstr "Yetki"
 
 #: app/blueprints/multilingual/templates/multilingual/userEditPage.html:97
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:124
@@ -411,113 +439,126 @@ msgstr ""
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:23
 #: app/templates/LeftSideBar.html:71
 msgid "User Management"
-msgstr ""
+msgstr "Kullanıcı Yönetimi"
 
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:48
 msgid "Add User"
-msgstr ""
+msgstr "Ekle"
 
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:196
 msgid "Authority"
-msgstr ""
+msgstr "Yetki"
 
 #: app/blueprints/multilingual/templates/multilingual/userManagement.html:199
 msgid "Actions"
-msgstr ""
+msgstr "Düzenle/Sil"
+
+#: app/blueprints/multilingual/templates/multilingual/webguivalue.html:5
+msgid "Block Label"
+msgstr "Blok Adı"
+
+#: app/blueprints/multilingual/templates/multilingual/webguivalue.html:6
+msgid "Value"
+msgstr "Değer"
+
+#: app/blueprints/multilingual/templates/multilingual/webguivalue3.html:5
+#: app/blueprints/multilingual/templates/multilingual/webguivalue3.html:34
+msgid "Send"
+msgstr "Gönder"
+
+#: app/templates/Div_ramUsage.html:2
+msgid "RAM Usage"
+msgstr "RAM Kullanımı"
+
+#: app/templates/Div_statusversion.html:2
+msgid "Firmware Version"
+msgstr "Firmware Versiyonu"
+
+#: app/templates/Div_systemTime.html:2
+msgid "System Time"
+msgstr "Sistem Zamanı"
 
 #: app/templates/LeftSideBar.html:100
 msgid "Update Device:"
-msgstr ""
-
-#: app/templates/LeftSideBar.html:106
-msgid "Project Upload:"
-msgstr ""
+msgstr "Cihazı Güncelle"
 
 #: app/templates/LeftSideBar.html:113
-msgid "Firmware Upload:"
-msgstr ""
-
-#: app/templates/LeftSideBar.html:118
-msgid "SSL Certificate Update:"
-msgstr ""
+msgid "Firmware Upload"
+msgstr "Firmware Yükle"
 
 #: app/templates/LeftSideBar.html:128
 msgid "Network"
-msgstr ""
+msgstr "Ağ"
 
 #: app/templates/LeftSideBar.html:152 app/templates/LeftSideBar.html:166
 msgid "Firewall"
-msgstr ""
+msgstr "Güvenlik Duvarı"
 
 #: app/templates/LeftSideBar.html:173
 msgid "Filtering Rules"
-msgstr ""
+msgstr "Filtreleme Kuralları"
 
 #: app/templates/LeftSideBar.html:183
 msgid "Network Bridge"
-msgstr ""
+msgstr "Ağ Köprüleme"
 
 #: app/templates/LeftSideBar.html:188
 msgid "NAT"
-msgstr ""
+msgstr "NAT"
 
 #: app/templates/LeftSideBar.html:195
 msgid "Services"
-msgstr ""
+msgstr "Servisler"
 
 #: app/templates/LeftSideBar.html:211 app/templates/LeftSideBar.html:225
 msgid "Device Log"
-msgstr ""
+msgstr "Cihaz Kayıt"
 
 #: app/templates/LeftSideBar.html:230
 msgid "Logs"
-msgstr ""
+msgstr "Kayıtlar"
 
 #: app/templates/LeftSideBar.html:246
 msgid "Addons"
-msgstr ""
+msgstr "Eklentiler"
 
 #: app/templates/LeftSideBar.html:263
 msgid "Tables"
-msgstr ""
+msgstr "Tablolar"
 
 #: app/templates/LeftSideBar.html:277
 msgid "Block Tables"
-msgstr ""
-
-#: app/templates/LeftSideBar.html:279
-msgid "Block Parameters"
-msgstr ""
+msgstr "Blok Tabloları"
 
 #: app/templates/base.html:101
 msgid "Session Timeout"
-msgstr ""
+msgstr "Oturum Zaman Aşımı"
 
 #: app/templates/base.html:113
 msgid ""
 "Your session is about to expire. Please click button below to\n"
 "              keep this session current."
-msgstr ""
+msgstr "Oturum zaman aşımına uğradı.Oturumda kalmak için lütfen herhangi bir yere tıklayınız."
 
 #: app/templates/base.html:128
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: app/templates/logoutModal.html:13
 msgid "Ready to Leave?"
-msgstr ""
+msgstr "Oturum sonlandırılıyor."
 
 #: app/templates/logoutModal.html:25
 msgid ""
 "Select \"Logout\" below if you are ready to end your current session.\n"
 "        "
-msgstr ""
+msgstr "Aktif oturumu sonlandırmak için çıkış butonuna basınız."
 
 #: app/templates/logoutModal.html:30
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: app/templates/logoutModal.html:42
 msgid "Logout"
-msgstr ""
+msgstr "Çıkış"
 

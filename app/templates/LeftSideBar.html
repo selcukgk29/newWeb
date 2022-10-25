@@ -103,19 +103,19 @@
           class="collapse-item"
           href="{{ url_for('multilingual.uploadProject') }}"
           title="Project Upload"
-          >{{_('Project Upload:')}}</a
+          >{{_('Project Upload')}}</a
         >
         {% endif %} {%if auth[0]=='Administrator' %}
         <a
           class="collapse-item"
           href="{{ url_for('multilingual.uploadFirmware') }}"
           title="Firmware Upload"
-          >{{_('Firmware Upload:')}}</a
+          >{{_('Firmware Upload')}}</a
         >
         <a
           class="collapse-item"
           href="{{ url_for('multilingual.sslUpdatePage') }}"
-          >{{_('SSL Certificate Update:')}}</a
+          >{{_('SSL Certificate Update')}}</a
         >
         {% endif %}
       </div>

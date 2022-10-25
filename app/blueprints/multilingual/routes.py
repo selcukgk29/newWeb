@@ -72,14 +72,12 @@ def route():
     return redirect('/en')
 
 # İlk webserver açılışında Default username pass değiştirme sayfası route
-
-
 @multilingual.route("/updateDefaultUser", defaults={"lang_code": "en"}, methods=['GET', "POST"])
 @multilingual.route("/userGuncelle", defaults={"lang_code": "tr"}, methods=['GET', "POST"])
 def updateDefaultUser():
     if request.method == 'GET':
         try:
-            session['username']
+            session['defaultUser']
         except:
             return redirect('/')
         return render_template("multilingual/changeDefaultPass.html", EditUserInfo=fetchInfo("id", 0, "USERS"))
@@ -109,7 +107,7 @@ def login():
     if request.method == 'GET':
         if 'username' in session:
             return render_template('multilingual/index.html', userInfo=session['username'], auth=getAuth(session['username']), uptime=statuspage.getTimeUp(), time=statuspage.getTime(), ramUsage=statuspage.ramUsage(), netstatus=statuspage.interfaceControl(), dataType1=soc.dataType2)
-            # return render_template('multilingual/index.html', userInfo=session['username'], auth=getAuth(session['username']), uptime="statuspage.getTimeUp()", time="statuspage.getTime()", ramUsage="statuspage.ramUsage()", netstatus="statuspage.interfaceControl()", dataType1="asd")
+            #return render_template('multilingual/index.html', userInfo=session['username'], auth=getAuth(session['username']), uptime="statuspage.getTimeUp()", time="statuspage.getTime()", ramUsage="statuspage.ramUsage()", netstatus="statuspage.interfaceControl()", dataType1="asd")
         else:
             return render_template('multilingual/login.html')
     if request.method == 'POST':
@@ -126,16 +124,14 @@ def login():
         # Default password change page route
         if request.form["username"] == "admin" and request.form["password"] == "admin":
             session['defaultUser'] = 1
-            return redirect("/updateDefaultUser")
+            return redirect(url_for('multilingual.updateDefaultUser'))
         if (getAuth(user[0])[0] == "Technician" or getAuth(user[0])[0] == "Operator") and getIp(user[0])[0] == request.remote_addr:
             session['username'] = user[0]
             return redirect('index')
         elif getAuth(user[0])[0] == "Administrator":
             session['username'] = user[0]
             print(session)
-            # return render_template('index.html', userInfo=session['username'], netstatus=statuspage.interfaceControl(), auth=getAuth(session['username']), uptime=statuspage.getTimeUp(), time=statuspage.getTime(), ramUsage=statuspage.ramUsage(), dataType1=soc.dataType2)
-            return render_template('multilingual/index.html', userInfo=session['username'], auth=getAuth(session['username']), uptime="statuspage.getTimeUp()", time="statuspage.getTime()", ramUsage="statuspage.ramUsage()", netstatus="statuspage.interfaceControl()", dataType1="asd")
-
+            return render_template('multilingual/index.html', userInfo=session['username'], netstatus=statuspage.interfaceControl(), auth=getAuth(session['username']), uptime=statuspage.getTimeUp(), time=statuspage.getTime(), ramUsage=statuspage.ramUsage(), dataType1=soc.dataType2)
         elif getIp(user[0])[0] != request.remote_addr:
             print(request.remote_addr)
             flash('IP not authorized to access!')
@@ -144,7 +140,6 @@ def login():
             flash('Username or Password is incorrect.')
             return redirect('/en')
 
-
 @multilingual.route('/index')
 def index():
     if request.method == 'GET':
@@ -152,8 +147,7 @@ def index():
             session['username']
         except:
             return redirect('/')
-        return render_template('multilingual/index.html', userInfo=session['username'], auth=getAuth(session['username']), uptime="statuspage.getTimeUp()", time="statuspage.getTime()", ramUsage="statuspage.ramUsage()", netstatus="statuspage.interfaceControl()", dataType1="asd")
-
+        return render_template('multilingual/index.html', userInfo=session['username'], auth=getAuth(session['username']), uptime=statuspage.getTimeUp(), time=statuspage.getTime(), ramUsage=statuspage.ramUsage(), netstatus=statuspage.interfaceControl(), dataType1=soc.dataType1)
 
 @multilingual.route('/logout', methods=['GET', 'POST'])
 def logout():
@@ -161,7 +155,6 @@ def logout():
         session.clear()
         print("session temizlendi")
         return redirect('/')
-
 
 @multilingual.route('/uploadProject', defaults={'lang_code': 'en'}, methods=['GET', 'POST'])
 @multilingual.route('/projeYukle', defaults={'lang_code': 'tr'}, methods=['GET', 'POST'])
@@ -594,17 +587,14 @@ def networkBridge():
             return redirect('/')
         return render_template('multilingual/bridge.html', userInfo=session['username'], auth=getAuth(session['username']), filters=fetchAllData("bridgeTable"))
     if request.method == "POST":
-        print(request.form)
         if fetchInfo("name", request.form["bridgeName"], "bridgeTable") != None:
             flash(
-                "Device "+request.form["bridgeName"]+" already exists; can't create bridge with the same name")
+                    "Device "+request.form["bridgeName"]+" already exists; can't create bridge with the same name")
             return redirect(url_for("multilingual.networkBridge"))
-     
-        # Interface başında boşluk var !! ( eth1)
+  # Interface başında boşluk var !! ( eth1)
         a = fetchInfo("interfaces", " eth0", "bridgeTable")
         b = fetchInfo("interfaces", " eth1", "bridgeTable")
-        c = fetchInfo("interfaces", " eth0 eth1", "bridgeTable")
-  
+        c = fetchInfo("interfaces", " eth0 eth1", "bridgeTable")    
         if a == None and b == None and c == None:  # Flash messages bridge
             bridge.addbridge(request.form) 
             print("hiçbiri yoksa birini ekle ")
@@ -619,11 +609,11 @@ def networkBridge():
             print("eth1 ekledi ")   
         else:
             flash(
-                "Device eth is already a member of a bridge; can't enslave it to bridge.")
+                    "Device eth is already a member of a bridge; can't enslave it to bridge.")
             return redirect(url_for("multilingual.networkBridge"))
-        return redirect(url_for("multilingual.networkBridge"))
-
-
+        flash("You successfully bridged interface/interfaces. You can now connect to the device with Bridge ip. ")
+        return redirect(url_for("multilingual.networkBridge"))          
+   
 @multilingual.route('/firewall/networkBridge/deleteBridge', methods=['GET', 'POST'])
 def deleteBridge():
     if request.method == "POST":
@@ -655,6 +645,13 @@ def downloadlog():
     print(path)
     return send_file(path, as_attachment=True)
 
+@multilingual.route('/get_toggled_status',methods=['GET'],defaults={'lang_code': 'en'})
+def toggled_status():
+    if request.method == 'GET':
+        current_status = request.values
+        if (current_status['mode'] == 'false'):
+            syslogFunc.enableMod()
+        return 'Toggled' if current_status == 'Untoggled' else 'Untoggled'
 
 @multilingual.route('/connection', methods=['GET', 'POST'])
 def webguiconnection():
@@ -780,17 +777,18 @@ def webguivalue3():
     if request.method == 'GET':
         return render_template('multilingual/webguivalue3.html', dataType0=soc.dataType0)
     if request.method == 'POST':
-        updateData = [{
-            'BlockLineLabel': soc.dataType0[int(request.form['index'])]['BlockLineLabel'],
-            'BlockNumber': soc.dataType0[int(request.form['index'])]['BlockNumber'],
-            'BlockType': soc.dataType0[int(request.form['index'])]['BlockType'],
-            'BlockValue': float(request.form['value']),
-            'DataType': soc.dataType0[int(request.form['index'])]['DataType'],
-        }]
-        global sendToClient
-        print(type(request.form['value']))
-        sendToClient = json.dumps(updateData)
-        print(sendToClient)
+        if soc.dataType0!=None:
+            updateData = [{
+                'BlockLineLabel': soc.dataType0[int(request.form['index'])]['BlockLineLabel'],
+                'BlockNumber': soc.dataType0[int(request.form['index'])]['BlockNumber'],
+                'BlockType': soc.dataType0[int(request.form['index'])]['BlockType'],
+                'BlockValue': float(request.form['value']),
+                'DataType': soc.dataType0[int(request.form['index'])]['DataType'],
+            }]
+            global sendToClient
+            print(type(request.form['value']))
+            sendToClient = json.dumps(updateData)
+            print(sendToClient)
         return redirect(url_for("multilingual.webgui"))
 # Index page network status cards
 
